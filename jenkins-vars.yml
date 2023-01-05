@@ -5,15 +5,15 @@ project_name: docker-ci
 external_type: os
 release_type: stable
 release_tag: latest
-ls_branch: master
+ig_branch: master
 repo_vars:
   - BUILD_VERSION_ARG = 'OS'
-  - LS_USER = 'linuxserver'
-  - LS_REPO = 'docker-ci'
+  - IG_USER = 'imagegenius'
+  - IG_REPO = 'docker-ci'
   - CONTAINER_NAME = 'ci'
-  - DOCKERHUB_IMAGE = 'lsiodev/ci'
-  - DEV_DOCKERHUB_IMAGE = 'lsiodev/ci-dev'
-  - PR_DOCKERHUB_IMAGE = 'lspipepr/ci'
+  - DOCKERHUB_IMAGE = 'imagegenius/ci'
+  - DEV_DOCKERHUB_IMAGE = 'igdev/ci-dev'
+  - PR_DOCKERHUB_IMAGE = 'igpipepr/ci'
   - DIST_IMAGE = 'ubuntu'
   - MULTIARCH='false'
   - CI='false'

@@ -39,8 +39,8 @@ class SetEnvs():
         self.screenshot_delay = os.environ.get('WEB_SCREENSHOT_DELAY', '30')
         self.port = os.environ.get('PORT', '80')
         self.ssl = os.environ.get('SSL', 'false')
-        self.region = os.environ.get('S3_REGION', 'us-east-1')
-        self.bucket = os.environ.get('S3_BUCKET', 'ci-tests.linuxserver.io')
+        self.region = os.environ.get('S3_REGION', 'ap-southeast-2')
+        self.bucket = os.environ.get('S3_BUCKET', 'ci-tests.imagegenius.io')
         self.test_container_delay = os.environ.get('DELAY_START', '5')
         self.check_env()
 
@@ -130,7 +130,7 @@ class CI(SetEnvs):
             `tag` (str): The container tag
 
         1. Spins up the container tag
-            Checks the container logs for either `[services.d] done.` or `[ls.io-init] done.`
+            Checks the container logs for either `[services.d] done.` or `[ig-init] done.`
         2. Export the build version from the Container object.
         3. Export the package info from the Container object.
         4. Take a screenshot for the report.
@@ -183,7 +183,7 @@ class CI(SetEnvs):
         while time.time() < t_end:
             try:
                 logblob = container.logs().decode('utf-8')
-                if '[services.d] done.' in logblob or '[ls.io-init] done.' in logblob:
+                if '[services.d] done.' in logblob or '[ig-init] done.' in logblob:
                     logsfound = True
                     break
                 time.sleep(1)
@@ -334,7 +334,7 @@ class CI(SetEnvs):
                 self.logger.exception('Upload Error: %s',error)
                 self.log_upload()
                 raise CIError(f'Upload Error: {error}') from error
-        self.logger.info('Report available on https://ci-tests.linuxserver.io/%s/index.html', f'{self.image}/{self.meta_tag}')
+        self.logger.info('Report available on https://ci-tests.imagegenius.io/%s/index.html', f'{self.image}/{self.meta_tag}')
 
 
     def upload_file(self, file_path:str, object_name:str, content_type:dict) -> None:
