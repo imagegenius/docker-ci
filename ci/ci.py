@@ -87,7 +87,7 @@ class CI(SetEnvs):
     """
     def __init__(self) -> None:
         super().__init__()  # Init the SetEnvs object.
-        self.logger = logging.getLogger("LSIO CI")
+        self.logger = logging.getLogger("IG CI")
         logging.getLogger("botocore.auth").setLevel(logging.INFO)  # Don't log the S3 authentication steps.
 
         self.client = docker.from_env()
