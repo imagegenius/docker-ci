@@ -39,7 +39,7 @@ class SetEnvs():
         self.screenshot_delay = os.environ.get('WEB_SCREENSHOT_DELAY', '30')
         self.port = os.environ.get('PORT', '80')
         self.ssl = os.environ.get('SSL', 'false')
-        self.region = os.environ.get('S3_REGION', 'ap-southeast-2')
+        self.region = os.environ.get('S3_REGION', 'ap-melbourne-1')
         self.bucket = os.environ.get('S3_BUCKET', 'ci-tests.imagegenius.io')
         self.test_container_delay = os.environ.get('DELAY_START', '5')
         self.check_env()
@@ -101,7 +101,8 @@ class CI(SetEnvs):
             's3',
             region_name=self.region,
             aws_access_key_id=self.s3_key,
-            aws_secret_access_key=self.s3_secret)
+            aws_secret_access_key=self.s3_secret,
+			endpoint_url="https://axtrmi976kgd.compat.objectstorage.ap-melbourne-1.oraclecloud.com")
 
     def run(self,tags: list) -> None:
         """Will iterate over all the tags running container_test() on each tag, multithreaded.
