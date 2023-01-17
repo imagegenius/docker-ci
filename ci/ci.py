@@ -150,7 +150,6 @@ class CI(SetEnvs):
             logblob = container.logs().decode('utf-8')
             container.remove(force='true')
             warning_texts = {
-                "dotnet": "May be a .NET app. Service might not start on ARM32 with QEMU",
                 "uwsgi": "This image uses uWSGI and might not start on ARM/QEMU"
             }
             # Add the info to the report
@@ -158,7 +157,6 @@ class CI(SetEnvs):
                 'logs': logblob,
                 'sysinfo': packages,
                 'warnings': {
-                    'dotnet': warning_texts["dotnet"] if "icu-libs" in packages and "arm32" in tag else "",
                     'uwsgi': warning_texts["uwsgi"] if "uwsgi" in packages and "arm" in tag else ""
                 },
                 'build_version': build_version,
