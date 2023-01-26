@@ -231,8 +231,8 @@ class CI(SetEnvs):
         # Dump package information
         dump_commands = {
             'alpine': 'apk info -v',
-            'debian': 'apt list',
-            'ubuntu': 'apt list',
+            'debian': 'apt list -qq --installed',
+            'ubuntu': 'apt list -qq --installed',
             'fedora': 'rpm -qa',
             'arch': 'pacman -Q'
             }
