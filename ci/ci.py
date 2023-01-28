@@ -313,8 +313,7 @@ class CI(SetEnvs):
         self.logger.info('Uploading report files')
         # Index file upload
         index_file = f'{os.path.dirname(os.path.realpath(__file__))}/index.html'
-        shutil.copyfile(f'{os.path.dirname(os.path.realpath(__file__))}/404.jpg', f'{self.outdir}/404.jpg')
-        ctype = {'ContentType': 'text/html', 'ACL': 'public-read', 'CacheControl': 'no-cache'}  # Set content type
+        ctype = {'ContentType': 'text/html'}  # Set content type
         try:
             self.upload_file(index_file, "index.html", ctype)
         except (S3UploadFailedError, ValueError, ClientError) as error:
@@ -326,7 +325,7 @@ class CI(SetEnvs):
         for filename in os.listdir(self.outdir):
             time.sleep(0.5)
             ctype = mimetypes.guess_type(filename.lower(), strict=False)
-            ctype = {'ContentType': ctype[0] if ctype[0] else 'text/plain', 'ACL': 'public-read', 'CacheControl': 'no-cache'}  # Set content types for files
+            ctype = {'ContentType': ctype[0] if ctype[0] else 'text/plain'}  # Set content types for files
             try:
                 self.upload_file(f'{self.outdir}/{filename}', filename, ctype)
             except (S3UploadFailedError, ValueError, ClientError) as error:
