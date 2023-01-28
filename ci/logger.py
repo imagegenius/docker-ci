@@ -9,10 +9,11 @@ import platform
 
 logger = logging.getLogger()
 
+
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
-    ACCESS_KEY = os.environ.get("ACCESS_KEY","super_secret_key")
-    SECRET_KEY = os.environ.get("SECRET_KEY","super_secret_key")
+    ACCESS_KEY = os.environ.get("ACCESS_KEY", "super_secret_key")
+    SECRET_KEY = os.environ.get("SECRET_KEY", "super_secret_key")
 
     def formatException(self, exc_info):
         """Format an exception so that it prints on a single line."""
@@ -35,7 +36,7 @@ class CustomLogFormatter(logging.Formatter):
         return s
 
 
-def configure_logging(log_level:str):
+def configure_logging(log_level: str):
     """Setup console and file logging"""
 
     logger.handlers = []
@@ -43,14 +44,17 @@ def configure_logging(log_level:str):
 
     # Console logging
     ch = logging.StreamHandler()
-    cf = CustomLogFormatter('%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
+    cf = CustomLogFormatter(
+        '%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
     ch.setFormatter(cf)
     ch.setLevel(log_level)
     logger.addHandler(ch)
 
     # File logging
-    fh = TimedRotatingFileHandler(os.path.join(os.getcwd(),'ci.log'), when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
-    f = CustomLogFormatter('%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
+    fh = TimedRotatingFileHandler(os.path.join(os.getcwd(
+    ), 'ci.log'), when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
+    f = CustomLogFormatter(
+        '%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
     fh.setFormatter(f)
     fh.setLevel(log_level)
     logger.addHandler(fh)
@@ -58,4 +62,5 @@ def configure_logging(log_level:str):
     logging.info('Operating system: %s', platform.platform())
     logging.info('Python version: %s', platform.python_version())
     if log_level.upper() == "DEBUG":
-        logging.getLogger("botocore").setLevel(logging.WARNING) # Mute boto3 logging output
+        logging.getLogger("botocore").setLevel(
+            logging.WARNING)  # Mute boto3 logging output

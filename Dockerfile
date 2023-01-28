@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
+FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
 
 # set version label
 ARG BUILD_DATE
@@ -44,6 +44,7 @@ RUN \
     requests \
     selenium \
     docker \
+    ansi2html \
     boto3 \
     anybadge \
     pyvirtualdisplay \
