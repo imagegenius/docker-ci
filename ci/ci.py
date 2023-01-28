@@ -102,7 +102,7 @@ class CI(SetEnvs):
             region_name=self.region,
             aws_access_key_id=self.s3_key,
             aws_secret_access_key=self.s3_secret,
-			endpoint_url="https://axtrmi976kgd.compat.objectstorage.ap-melbourne-1.oraclecloud.com")
+			endpoint_url="https://s3.imagegenius.io")
 
     def run(self,tags: list) -> None:
         """Will iterate over all the tags running container_test() on each tag, multithreaded.
