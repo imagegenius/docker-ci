@@ -41,14 +41,14 @@ RUN \
   chmod +x /usr/bin/chromedriver && \
   echo "**** Install python deps ****" && \
   pip3 install --no-cache-dir \
-    requests \
-    selenium \
-    docker \
     ansi2html \
     boto3 \
-    anybadge \
+    docker \
+    jinja2 \
+    pillow \
     pyvirtualdisplay \
-    jinja2 && \
+    requests \
+    selenium && \
   echo "**** cleanup ****" && \
   apt-get autoclean && \
   rm -rf \

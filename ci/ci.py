@@ -15,6 +15,7 @@ from urllib3.util.retry import Retry
 import boto3
 from boto3.exceptions import S3UploadFailedError
 from botocore.exceptions import ClientError
+from PIL import Image
 import docker
 from docker.errors import APIError
 from docker.models.containers import Container
@@ -36,6 +37,7 @@ class SetEnvs():
         self.dockerenv = self.convert_env(os.environ.get("DOCKER_ENV", ""))
         self.webauth = os.environ.get('WEB_AUTH', 'user:password')
         self.webpath = os.environ.get('WEB_PATH', '')
+        self.branch = os.environ.get('BRANCH', '')
         self.screenshot = os.environ.get('WEB_SCREENSHOT', 'false')
         self.screenshot_delay = os.environ.get('WEB_SCREENSHOT_DELAY', '30')
         self.port = os.environ.get('PORT', '80')
@@ -346,7 +348,7 @@ class CI(SetEnvs):
         """
         self.logger.info('Uploading %s to %s bucket', file_path, self.bucket)
         destination_dir = f'{self.image}/{self.meta_tag}'
-        latest_dir = f'{self.image}/latest'
+        latest_dir = f'{self.image}/latest-{self.branch}'
         self.s3_client.upload_file(
             file_path, self.bucket, f'{destination_dir}/{object_name}', ExtraArgs=content_type)
         if object_name == 'index.html' or object_name == 'ci-status.yml':
@@ -393,7 +395,10 @@ class CI(SetEnvs):
                 'Sleeping for %s seconds before creating a screenshot on %s', self.screenshot_delay, tag)
             time.sleep(int(self.screenshot_delay))
             self.logger.info('Taking screenshot of %s at %s', tag, endpoint)
-            driver.get_screenshot_as_file(f'{self.outdir}/{tag}.png')
+            driver.get_screenshot_as_file(f'{tag}.png')
+            # Compress and convert the screenshot to JPEG
+            im = Image.open(f'{tag}.png')
+            im.save(f'{self.outdir}/{tag}.jpg', 'JPEG', quality=60)
             self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
                 'status': 'PASS',
                 'message': '-'}.items())))
