@@ -578,6 +578,7 @@ pipeline {
                 -e PORT=\"${CI_PORT}\" \
                 -e SSL=\"${CI_SSL}\" \
                 -e BASE=\"${DIST_IMAGE}\" \
+				-e BRANCH=\"${ig_branch}\" \
                 -e SECRET_KEY=\"${S3_SECRET}\" \
                 -e ACCESS_KEY=\"${S3_KEY}\" \
                 -e DOCKER_ENV=\"${CI_DOCKERENV}\" \
