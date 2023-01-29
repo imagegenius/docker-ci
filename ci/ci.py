@@ -397,7 +397,7 @@ class CI(SetEnvs):
             self.logger.info('Taking screenshot of %s at %s', tag, endpoint)
             driver.get_screenshot_as_file(f'{tag}.png')
             # Compress and convert the screenshot to JPEG
-            im = Image.open(f'{tag}.png')
+            im = Image.open(f'{tag}.png').convert("RGB")
             im.save(f'{self.outdir}/{tag}.jpg', 'JPEG', quality=60)
             self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
                 'status': 'PASS',
