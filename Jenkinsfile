@@ -504,13 +504,13 @@ pipeline {
           steps {
             sh '''#!/bin/bash
                   if [ "${MULTIARCH}" == "false" ]; then
-				    echo "Pushing image"
+                    echo "Pushing image"
                     docker tag ${IMAGE}:${META_TAG} ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER}
                     docker push ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER}
                     docker rmi \
                     ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER} || :
                   else
-				    echo "Pulling images"
+                    echo "Pulling images"
                     docker pull ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker tag ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                   fi
@@ -525,13 +525,13 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             sh '''#!/bin/bash
                   if [ "${MULTIARCH}" == "true" ]; then
-				    echo "Pulling images"
+                    echo "Pulling images"
                     docker pull ghcr.io/imagegenius/igdev-buildcache:amd64-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker pull ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker tag ghcr.io/imagegenius/igdev-buildcache:amd64-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:amd64-${META_TAG}
                     docker tag ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                   else
-				    echo "Pulling image"
+                    echo "Pulling image"
                     while true; do
                       docker pull ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER} &>/dev/null
                       if [ $? -eq 0 ]; then
@@ -578,7 +578,7 @@ pipeline {
                 -e PORT=\"${CI_PORT}\" \
                 -e SSL=\"${CI_SSL}\" \
                 -e BASE=\"${DIST_IMAGE}\" \
-				-e BRANCH=\"${ig_branch}\" \
+                -e BRANCH=\"master\" \
                 -e SECRET_KEY=\"${S3_SECRET}\" \
                 -e ACCESS_KEY=\"${S3_KEY}\" \
                 -e DOCKER_ENV=\"${CI_DOCKERENV}\" \
@@ -712,9 +712,6 @@ pipeline {
        ####### */
     // Removes all the images created by this run on the master and node
     stage('Prune-Docker') {
-      when {
-        environment name: 'EXIT_STATUS', value: ''
-      }
       parallel {
         stage('Docker Cleanup Node') {
           steps {
