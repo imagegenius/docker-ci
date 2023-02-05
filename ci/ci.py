@@ -71,6 +71,7 @@ class SetEnvs():
         """Make sure all needed ENVs are set"""
         try:
             self.image = os.environ['IMAGE']
+            self.container =os.environ['CONTAINER']
             self.base = os.environ['BASE']
             self.s3_key = os.environ['ACCESS_KEY']
             self.s3_secret = os.environ['SECRET_KEY']
@@ -100,7 +101,7 @@ class CI(SetEnvs):
         self.tag_report_tests = {tag: {'test': {}} for tag in self.tags}
         self.report_containers: dict[str, dict] = {}
         self.report_status = 'PASS'
-        self.outdir = f'{os.path.dirname(os.path.realpath(__file__))}/output/{self.image}/{self.meta_tag}'
+        self.outdir = f'{os.path.dirname(os.path.realpath(__file__))}/output/{self.container}/{self.meta_tag}'
         os.makedirs(self.outdir, exist_ok=True)
         self.s3_client = boto3.Session().client(
             's3',
@@ -336,7 +337,7 @@ class CI(SetEnvs):
                 self.log_upload()
                 raise CIError(f'Upload Error: {error}') from error
         self.logger.info(
-            'Report available on https://ci-tests.imagegenius.io/%s/index.html', f'{self.image}/{self.meta_tag}')
+            'Report available on https://ci-tests.imagegenius.io/%s/index.html', f'{self.container}/{self.meta_tag}')
 
     def upload_file(self, file_path: str, object_name: str, content_type: dict) -> None:
         """Upload a file to an S3 bucket
@@ -347,8 +348,8 @@ class CI(SetEnvs):
             `object_name` (str): S3 object name.
         """
         self.logger.info('Uploading %s to %s bucket', file_path, self.bucket)
-        destination_dir = f'{self.image}/{self.meta_tag}'
-        latest_dir = f'{self.image}/latest-{self.branch}'
+        destination_dir = f'{self.container}/{self.meta_tag}'
+        latest_dir = f'{self.container}/latest-{self.branch}'
         self.s3_client.upload_file(
             file_path, self.bucket, f'{destination_dir}/{object_name}', ExtraArgs=content_type)
         if object_name == 'index.html' or object_name == 'ci-status.yml':
@@ -399,10 +400,17 @@ class CI(SetEnvs):
             # Compress and convert the screenshot to JPEG
             im = Image.open(f'{tag}.png').convert("RGB")
             im.save(f'{self.outdir}/{tag}.jpg', 'JPEG', quality=60)
-            self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
-                'status': 'PASS',
-                'message': '-'}.items())))
-            self.logger.info('Screenshot %s: PASS', tag)
+            response = requests.get(test_endpoint)
+            if response.status_code != 200:
+                self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
+                    'status': 'FAIL',
+                    'message': f'HTTP ERROR: {response.status_code}'}.items())))
+                self.logger.exception('Screenshot %s FAIL HTTP ERROR: %s', tag, response.status_code)
+            else:
+                self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
+                    'status': 'PASS',
+                    'message': '-'}.items())))
+                self.logger.info('Screenshot %s: PASS', tag)
         except (requests.Timeout, requests.ConnectionError, KeyError) as error:
             self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
                 'status': 'FAIL',
