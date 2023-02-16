@@ -19,8 +19,8 @@ debconf1.5.79ubuntu1
 debianutils5.5-1ubuntu2
 diffutils1:3.8-0ubuntu2
 dirmngr2.2.27-3ubuntu2.1
-docker-ce5:23.0.0-1~ubuntu.22.04~jammy
-docker-ce-cli5:23.0.0-1~ubuntu.22.04~jammy
+docker-ce5:23.0.1-1~ubuntu.22.04~jammy
+docker-ce-cli5:23.0.1-1~ubuntu.22.04~jammy
 dpkg1.21.1ubuntu2.1
 e2fsprogs1.46.5-2ubuntu1.1
 findutils4.8.0-1ubuntu3
@@ -31,7 +31,7 @@ gcc-12-base12.1.0-2ubuntu1~22.04
 gnupg2.2.27-3ubuntu2.1
 gnupg-l10n2.2.27-3ubuntu2.1
 gnupg-utils2.2.27-3ubuntu2.1
-google-chrome-stable110.0.5481.77-1
+google-chrome-stable110.0.5481.100-1
 gpg2.2.27-3ubuntu2.1
 gpg-agent2.2.27-3ubuntu2.1
 gpgconf2.2.27-3ubuntu2.1
