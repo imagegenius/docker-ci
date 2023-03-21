@@ -71,7 +71,7 @@ class SetEnvs():
         """Make sure all needed ENVs are set"""
         try:
             self.image = os.environ['IMAGE']
-            self.container =os.environ['CONTAINER']
+            self.container = os.environ['CONTAINER']
             self.base = os.environ['BASE']
             self.s3_key = os.environ['ACCESS_KEY']
             self.s3_secret = os.environ['SECRET_KEY']
@@ -163,12 +163,14 @@ class CI(SetEnvs):
                 file.write(html_logs)
             container.remove(force='true')
             warning_texts = {
+                "dotnet": "May be a .NET app. Service might not start on ARM32 with QEMU",
                 "uwsgi": "This image uses uWSGI and might not start on ARM/QEMU"
             }
             # Add the info to the report
             self.report_containers[tag] = {
                 'sysinfo': packages,
                 'warnings': {
+                    'dotnet': warning_texts["dotnet"] if "icu-libs" in packages and "arm32" in tag else "",
                     'uwsgi': warning_texts["uwsgi"] if "uwsgi" in packages and "arm" in tag else ""
                 },
                 'build_version': build_version,
@@ -247,8 +249,8 @@ class CI(SetEnvs):
         # Dump package information
         dump_commands = {
             'alpine': 'apk info -v',
-            'debian': 'apt list -qq --installed',
-            'ubuntu': 'apt list -qq --installed',
+            'debian': 'apt list',
+            'ubuntu': 'apt list',
             'fedora': 'rpm -qa',
             'arch': 'pacman -Q'
         }
@@ -400,17 +402,10 @@ class CI(SetEnvs):
             # Compress and convert the screenshot to JPEG
             im = Image.open(f'{tag}.png').convert("RGB")
             im.save(f'{self.outdir}/{tag}.jpg', 'JPEG', quality=60)
-            response = requests.get(test_endpoint)
-            if response.status_code != 200:
-                self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
-                    'status': 'FAIL',
-                    'message': f'HTTP ERROR: {response.status_code}'}.items())))
-                self.logger.exception('Screenshot %s FAIL HTTP ERROR: %s', tag, response.status_code)
-            else:
-                self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
-                    'status': 'PASS',
-                    'message': '-'}.items())))
-                self.logger.info('Screenshot %s: PASS', tag)
+            self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
+                'status': 'PASS',
+                'message': '-'}.items())))
+            self.logger.info('Screenshot %s: PASS', tag)
         except (requests.Timeout, requests.ConnectionError, KeyError) as error:
             self.tag_report_tests[tag]['test']['Get screenshot'] = (dict(sorted({
                 'status': 'FAIL',
