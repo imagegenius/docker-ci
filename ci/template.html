@@ -23,15 +23,17 @@
 		</header>
 		<div id="results">
 			<h1><strong>Test Results:</strong> {{ image }}:{{ meta_tag }}</h1>
-			<h2>
-				Cumulative:
-				<span class="report-status-{{ report_status.lower() }}">{{ report_status }}</span>
-			</h2>
+			<h2>Cumulative: <span class="report-status-{{ report_status.lower() }}">{{ report_status }}</span></h2>
 			<main>
 				{% for tag in report_containers %}
 				<section>
 					<div class="section-header">
-						<h2 class="section-header-h2">{{ image }}:{{ tag }}</h2>
+						{% if report_containers[tag]["test_success"] %}
+						<h3 class="section-header-status"><span class="report-status-pass">PASS</span></h3>
+						{% else %}
+						<h3 class="section-header-status"><span class="report-status-fail">FAIL</span></h3>
+						{% endif %}
+						<h2 class="section-header-h2"> {{ image }}:{{ tag }} </h2>
 					</div>
 					{% if screenshot == 'true' %}
 					<a href="../{{ meta_tag }}/{{ tag }}.jpg">
@@ -39,29 +41,24 @@
 							onerror="this.onerror=null; this.src='/assets/404.jpg'; this.parentElement.setAttribute('href','/assets/404.jpg')" />
 					</a>
 					{% endif %}
-					<h3 class="build-version">
-						Build Info: {{ report_containers[tag]["build_version"] }}
-					</h3>
+					<h3 class="build-version">Build Info: {{ report_containers[tag]["build_version"] }}</h3>
 					<summary class="summary">
 						<a href="../{{ meta_tag }}/{{ tag }}.log.html" target="_blank">View Container Logs</a>
 					</summary>
-					<details>
-						<summary class="summary">Package Info</summary>
-						<div class="summary-container">
-							<pre><code>{{ report_containers[tag]["sysinfo"] }}</code>
-          </pre>
-						</div>
-					</details>
+					<summary class="summary">
+						<a href="../{{ meta_tag }}/{{ tag }}.sbom.html" target="_blank">View SBOM output</a>
+					</summary>
 					{% if report_containers[tag]["has_warnings"]%}
 					<details open>
 						<summary class="warning-summary">Warnings</summary>
-						{% for warning in report_containers[tag]["warnings"] %} {% if
-						report_containers[tag]["warnings"][warning] %}
+						{% for warning in report_containers[tag]["warnings"] %}
+						{% if report_containers[tag]["warnings"][warning] %}
 						<div class="warning-notice">
-							<code class="warning-note"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                  {{ report_containers[tag]["warnings"][warning] }}</code>
+							<code
+								class="warning-note"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ report_containers[tag]["warnings"][warning] }}</code>
 						</div>
-						{% endif %} {% endfor %}
+						{% endif %}
+						{% endfor %}
 					</details>
 					{% endif %}
 					<div class="table-container">
@@ -77,22 +74,16 @@
 								{% for test in report_containers[tag]["test_results"] %}
 								<tr>
 									<td>{{ test }}</td>
-									{% if report_containers[tag]["test_results"][test]['status']
-									== 'PASS' %}
-									<td class="result-cell">
-										{{ report_containers[tag]["test_results"][test]['status']
-										}} <i class="fas fa-check-circle"></i>
+									{% if report_containers[tag]["test_results"][test]['status'] == 'PASS' %}
+									<td class="result-cell">{{ report_containers[tag]["test_results"][test]['status'] }}
+										<i class="fas fa-check-circle"></i>
 									</td>
 									{% else %}
-									<td class="result-cell">
-										{{ report_containers[tag]["test_results"][test]['status']
-										}} <i class="fas fa-exclamation-circle"></i>
+									<td class="result-cell">{{ report_containers[tag]["test_results"][test]['status'] }}
+										<i class="fas fa-exclamation-circle"></i>
 									</td>
 									{% endif %}
-									<td>
-										{{ report_containers[tag]["test_results"][test]["message"]
-										}}
-									</td>
+									<td>{{ report_containers[tag]["test_results"][test]["message"] }}</td>
 								</tr>
 								{% endfor %}
 							</tbody>
@@ -118,4 +109,5 @@
 			});
 	</script>
 </body>
+
 </html>

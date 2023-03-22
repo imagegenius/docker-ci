@@ -27,9 +27,7 @@ RUN \
     python3 \
     python3-pip \
     python3-setuptools \
-    unzip \
-    xserver-xephyr \
-    xvfb && \
+    unzip && \
   echo "**** install chrome driver ****" && \
   CHROME_RELEASE=$(curl -sLk https://chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
   echo "Retrieving Chrome driver version ${CHROME_RELEASE}" && \
@@ -44,11 +42,11 @@ RUN \
   echo "**** Install python deps ****" && \
   pip3 install --no-cache-dir \
     ansi2html \
+    anybadge \
     boto3 \
     docker \
     jinja2 \
     pillow \
-    pyvirtualdisplay \
     requests \
     selenium && \
   echo "**** cleanup ****" && \

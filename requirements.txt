@@ -4,4 +4,4 @@ anybadge
 selenium
 jinja2
 requests
-pyvirtualdisplay
+ansi2html

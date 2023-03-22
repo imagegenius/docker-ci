@@ -14,7 +14,8 @@ def run_test():
             # Override the report_status if an ARM tag failed, but the amd64 tag passed.
             ci.report_status = 'PASS'
     ci.report_render()
-    ci.ci_status()
+    ci.badge_render()
+    ci.json_render()
     ci.report_upload()
     if ci.report_status == 'PASS':  # Exit based on test results
         logger.info('Tests PASSED')

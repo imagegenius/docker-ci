@@ -7,6 +7,16 @@ import re
 import platform
 
 
+container = os.environ.get("CONTAINER")
+meta_tag = os.environ.get("META_TAG")
+if container and meta_tag:
+    dir = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), "output", container, meta_tag)
+    os.makedirs(dir, exist_ok=True)
+    log_dir = os.path.join(dir, 'ci.log')
+else:
+    log_dir = os.path.join(os.getcwd(), 'ci.log')
+
 logger = logging.getLogger()
 
 
@@ -51,8 +61,8 @@ def configure_logging(log_level: str):
     logger.addHandler(ch)
 
     # File logging
-    fh = TimedRotatingFileHandler(os.path.join(os.getcwd(
-    ), 'ci.log'), when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
+    fh = TimedRotatingFileHandler(
+        log_dir, when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
     f = CustomLogFormatter(
         '%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
     fh.setFormatter(f)
@@ -64,3 +74,5 @@ def configure_logging(log_level: str):
     if log_level.upper() == "DEBUG":
         logging.getLogger("botocore").setLevel(
             logging.WARNING)  # Mute boto3 logging output
+        logging.getLogger("urllib3.connectionpool").setLevel(
+            logging.WARNING)  # Mute urllib3.connectionpool logging output
