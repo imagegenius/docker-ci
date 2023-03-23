@@ -14,8 +14,8 @@ attrs                                                                        22.
 base-files                                                                   12ubuntu4.3                                        deb        
 base-passwd                                                                  3.5.52build1                                       deb        
 bash                                                                         5.1-6ubuntu1                                       deb        
-boto3                                                                        1.26.96                                            python     
-botocore                                                                     1.29.96                                            python     
+boto3                                                                        1.26.97                                            python     
+botocore                                                                     1.29.97                                            python     
 bsdutils                                                                     1:2.37.2-4ubuntu3                                  deb        
 ca-certificates                                                              20211016ubuntu0.22.04.1                            deb        
 certifi                                                                      2022.12.7                                          python     
