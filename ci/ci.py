@@ -39,13 +39,12 @@ class SetEnvs():
         self.webpath = os.environ.get('WEB_PATH', '')
         self.branch = os.environ.get('BRANCH', '')
         self.screenshot = os.environ.get('WEB_SCREENSHOT', 'false')
-        self.screenshot_delay = os.environ.get('WEB_SCREENSHOT_DELAY', '30')
         self.logs_delay = os.environ.get('DOCKER_LOGS_DELAY', '300')
+        self.startup_delay = os.environ.get('STARTUP_DELAY', '10')
         self.port = os.environ.get('PORT', '80')
         self.ssl = os.environ.get('SSL', 'false')
         self.region = os.environ.get('S3_REGION', 'ap-melbourne-1')
         self.bucket = os.environ.get('S3_BUCKET', 'ci-tests.imagegenius.io')
-        self.test_container_delay = os.environ.get('DELAY_START', '5')
         self.check_env()
 
     def convert_env(self, envs: str = None) -> dict:
@@ -224,20 +223,12 @@ class CI(SetEnvs):
             bool: Return the output if successful otherwise "ERROR".
         """
 
-        arch = ""
-        if "amd64" in tag:
-            arch = "amd64"
-        elif "arm64" in tag:
-            arch = "arm64"
-        elif "arm32" in tag:
-            arch = "arm32"
-
         syft: Container = self.client.containers.run(
-            image="anchore/syft:latest",
-            command=f"{self.image}:{tag} --platform linux/{arch}",
+            image="ghcr.io/anchore/syft:latest",
+            command=f"{self.image}:{tag} --platform linux/{tag[:5].lower()}",
             detach=True,
             volumes={
-                '/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'rw'}
+                '/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'ro'}
             }
         )
 
@@ -258,6 +249,11 @@ class CI(SetEnvs):
                         'message': '-'}.items())))
                     self.logger.info('Create SBOM package list %s: PASS', tag)
                     self.create_html_ansi_file(str(logblob), tag, "sbom")
+                    try:
+                        syft.remove(force=True)
+                    except Exception:
+                        self.logger.exception(
+                            "Failed to remove the syft container, %s", tag)
                     return logblob
             except (APIError, ContainerError, ImageNotFound) as error:
                 self.logger.exception(
@@ -266,11 +262,6 @@ class CI(SetEnvs):
                     'Create SBOM': 'FAIL',
                     'message': str(error)}.items())))
                 self.report_status = 'FAIL'
-        try:
-            syft.remove(force=True)
-        except Exception:
-            self.logger.exception(
-                "Failed to remove the syft container, %s", tag)
         return "ERROR"
 
     def get_build_version(self, container: Container, tag: str) -> str:
@@ -319,6 +310,9 @@ class CI(SetEnvs):
             try:
                 logblob = container.logs().decode('utf-8')
                 if '[services.d] done.' in logblob or '[ig-init] done.' in logblob:
+                    self.logger.info(
+                        "Sleeping for %s seconds while %s finishes starting", self.startup_delay, tag)
+                    time.sleep(int(self.startup_delay))
                     self.logger.info('Container startup completed for %s', tag)
                     self.tag_report_tests[tag]['test']['Container startup'] = (dict(sorted({
                         'status': 'PASS',
@@ -469,19 +463,12 @@ class CI(SetEnvs):
             `tag` (str): The container tag we are testing.
         """
         proto = 'https' if self.ssl.upper() == 'TRUE' else 'http'
-        # Sleep for the user specified amount of time
-        self.logger.info('Sleeping for %s seconds before reloading container: %s and refreshing container attrs',
-                         self.test_container_delay, container.image)
-        time.sleep(int(self.test_container_delay))
-        container.reload()
         try:
-            ip_adr = container.attrs['NetworkSettings']['Networks']['bridge']['IPAddress']
+            container_info = self.client.api.inspect_container(container.id)
+            ip_adr = container_info['NetworkSettings']['IPAddress']
             endpoint = f'{proto}://{self.webauth}@{ip_adr}:{self.port}{self.webpath}'
             driver = self.setup_driver()
             driver.get(endpoint)
-            self.logger.info(
-                'Sleeping for %s seconds before creating a screenshot on %s', self.screenshot_delay, tag)
-            time.sleep(int(self.screenshot_delay))
             self.logger.info('Taking screenshot of %s at %s', tag, endpoint)
             driver.get_screenshot_as_file(f'{tag}.png')
             # Compress and convert the screenshot to JPEG
