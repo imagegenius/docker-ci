@@ -212,43 +212,6 @@ class CI(SetEnvs):
         self.report_containers[tag]["has_warnings"] = any(
             warning[1] for warning in self.report_containers[tag]["warnings"].items())
 
-    def export_package_info(self, container: Container, tag: str) -> str:
-        """Dump the package info into a string for the report
-
-        Args:
-            container (Container): The container we are testing
-            tag (str): The tag we are testing
-
-        Returns:
-            str: Return the output of the dump command or 'ERROR'
-        """
-        # Dump package information
-        dump_commands = {
-            'alpine': 'apk info -v',
-            'debian': 'apt list',
-            'ubuntu': 'apt list',
-            'fedora': 'rpm -qa',
-            'arch': 'pacman -Q'
-        }
-        try:
-            self.logger.info('Dumping package info for %s', tag)
-            info = container.exec_run(dump_commands[self.base])
-            packages = info[1].decode('utf-8')
-            if info[0] != 0:
-                raise CIError(f"Failed to dump packages. Output: {packages}")
-            self.tag_report_tests[tag]['test']['Dump package info'] = (dict(sorted({
-                'status': 'PASS',
-                'message': '-'}.items())))
-            self.logger.info('Dump package info %s: PASS', tag)
-        except (APIError, IndexError, CIError) as error:
-            packages = 'ERROR'
-            self.logger.exception('Dumping package info on %s: FAIL', tag)
-            self.tag_report_tests[tag]['test']['Dump package info'] = (dict(sorted({
-                'Dump package info': 'FAIL',
-                'message': str(error)}.items())))
-            self.report_status = 'FAIL'
-        return packages
-
     def generate_sbom(self, tag: str) -> str:
         """Generate the SBOM for the image tag.
 
@@ -260,9 +223,18 @@ class CI(SetEnvs):
         Returns:
             bool: Return the output if successful otherwise "ERROR".
         """
+
+        arch = ""
+        if "amd64" in tag:
+            arch = "amd64"
+        elif "arm64" in tag:
+            arch = "arm64"
+        elif "arm32" in tag:
+            arch = "arm32"
+
         syft: Container = self.client.containers.run(
             image="anchore/syft:latest",
-            command=f"{self.image}:{tag}",
+            command=f"{self.image}:{tag} --platform linux/{arch}",
             detach=True,
             volumes={
                 '/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'rw'}
