@@ -8,6 +8,8 @@ ARG VERSION
 LABEL build_version="ImageGenius version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydazz"
 
+COPY requirements.txt /tmp/requirements.txt
+
 RUN \
   echo "**** add 3rd party repos ****" && \
   mkdir -p /etc/apt/keyrings && \
@@ -40,15 +42,7 @@ RUN \
   chown root:root /usr/bin/chromedriver && \
   chmod +x /usr/bin/chromedriver && \
   echo "**** Install python deps ****" && \
-  pip3 install --no-cache-dir \
-    ansi2html \
-    anybadge \
-    boto3 \
-    docker \
-    jinja2 \
-    pillow \
-    requests \
-    selenium && \
+  pip3 install --no-cache-dir -r /tmp/requirements.txt && \
   echo "**** cleanup ****" && \
   apt-get autoclean && \
   rm -rf \

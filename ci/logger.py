@@ -5,7 +5,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import re
 import platform
-
+import sys
 
 container = os.environ.get("CONTAINER")
 meta_tag = os.environ.get("META_TAG")
@@ -22,8 +22,16 @@ logger = logging.getLogger()
 
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
+
     ACCESS_KEY = os.environ.get("ACCESS_KEY", "super_secret_key")
     SECRET_KEY = os.environ.get("SECRET_KEY", "super_secret_key")
+
+    # ANSI escape codes for different colors
+    ANSI_AMD64 = '\u001b[32;1m' # Bright Green
+    ANSI_ARM32 = '\u001b[33;1m' # Yellow
+    ANSI_ARM64 = '\u001b[35;1m' # Magenta
+    ANSI_MAIN = '\u001b[37;1m' # White Bold
+    ANSI_RESET = '\u001b[0m' # Clear
 
     def formatException(self, exc_info):
         """Format an exception so that it prints on a single line."""
@@ -42,6 +50,16 @@ class CustomLogFormatter(logging.Formatter):
             s = s.replace('\n', '') + '|'
         s = self.format_credential_key(s)
         s = self.format_secret_key(s)
+
+        # Set color based on thread name
+        if "AMD64" in record.threadName:
+            s = self.ANSI_AMD64 + s + self.ANSI_RESET
+        elif "ARM32" in record.threadName:
+            s = self.ANSI_ARM32 + s + self.ANSI_RESET
+        elif "ARM64" in record.threadName:
+            s = self.ANSI_ARM64 + s + self.ANSI_RESET
+        else:
+            s = self.ANSI_MAIN + s + self.ANSI_RESET
 
         return s
 
