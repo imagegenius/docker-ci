@@ -15,7 +15,7 @@ base-files                                                                   12u
 base-passwd                                                                  3.5.52build1                                       deb        
 bash                                                                         5.1-6ubuntu1                                       deb        
 boto3                                                                        1.26.108                                           python     
-botocore                                                                     1.29.137                                           python     
+botocore                                                                     1.29.142                                           python     
 bsdutils                                                                     1:2.37.2-4ubuntu3                                  deb        
 ca-certificates                                                              20211016ubuntu0.22.04.1                            deb        
 certifi                                                                      2023.5.7                                           python     
@@ -33,8 +33,8 @@ debianutils                                                                  5.5
 diffutils                                                                    1:3.8-0ubuntu2                                     deb        
 dirmngr                                                                      2.2.27-3ubuntu2.1                                  deb        
 docker                                                                       6.0.1                                              python     
-docker-ce                                                                    5:24.0.1-1~ubuntu.22.04~jammy                      deb        
-docker-ce-cli                                                                5:24.0.1-1~ubuntu.22.04~jammy                      deb        
+docker-ce                                                                    5:24.0.2-1~ubuntu.22.04~jammy                      deb        
+docker-ce-cli                                                                5:24.0.2-1~ubuntu.22.04~jammy                      deb        
 dpkg                                                                         1.21.1ubuntu2.1                                    deb        
 e2fsprogs                                                                    1.46.5-2ubuntu1.1                                  deb        
 exceptiongroup                                                               1.1.1                                              python     
@@ -54,7 +54,7 @@ github.com/containerd/aufs                                                   v1.
 github.com/containerd/btrfs                                                  v1.0.0                                             go-module  
 github.com/containerd/cgroups                                                v1.0.4                                             go-module  
 github.com/containerd/console                                                v1.0.3                                             go-module  
-github.com/containerd/containerd                                             v0.0.0-20230505151328-3dce8eb055cb                 go-module  
+github.com/containerd/containerd                                             v1.6.21                                            go-module  
 github.com/containerd/continuity                                             v0.3.0                                             go-module  
 github.com/containerd/fifo                                                   v1.0.0                                             go-module  
 github.com/containerd/go-cni                                                 v1.1.6                                             go-module  
@@ -426,10 +426,10 @@ ubuntu-mono                                                                  20.
 ucf                                                                          3.0043                                             deb        
 udev                                                                         249.11-0ubuntu3.9                                  deb        
 unzip                                                                        6.0-26ubuntu3.1                                    deb        
-urllib3                                                                      1.26.15                                            python     
+urllib3                                                                      1.26.16                                            python     
 usrmerge                                                                     25ubuntu2                                          deb        
 util-linux                                                                   2.37.2-4ubuntu3                                    deb        
-websocket-client                                                             1.5.1                                              python     
+websocket-client                                                             1.5.2                                              python     
 wget                                                                         1.21.2-2ubuntu1                                    deb        
 wheel                                                                        0.37.1                                             python     
 wsproto                                                                      1.2.0                                              python     
