@@ -15,9 +15,9 @@ base-files                                                                   12u
 base-passwd                                                                  3.5.52build1                                       deb        
 bash                                                                         5.1-6ubuntu1                                       deb        
 boto3                                                                        1.26.108                                           python     
-botocore                                                                     1.29.146                                           python     
+botocore                                                                     1.29.151                                           python     
 bsdutils                                                                     1:2.37.2-4ubuntu3                                  deb        
-ca-certificates                                                              20211016ubuntu0.22.04.1                            deb        
+ca-certificates                                                              20230311ubuntu0.22.04.1                            deb        
 certifi                                                                      2023.5.7                                           python     
 charset-normalizer                                                           3.1.0                                              python     
 containerd.io                                                                1.6.21-1                                           deb        
@@ -72,9 +72,9 @@ github.com/cpuguy83/go-md2man/v2                                             v2.
 github.com/cpuguy83/go-md2man/v2                                             v2.0.0-20190314233015-f79a8a8ca69d                 go-module  
 github.com/cyphar/filepath-securejoin                                        v0.2.3                                             go-module  
 github.com/davecgh/go-spew                                                   v1.1.1                                             go-module  
-github.com/docker/cli/cmd/docker                                             (devel)                                            go-module  
-github.com/docker/docker/cmd/docker-proxy                                    (devel)                                            go-module  
-github.com/docker/docker/cmd/dockerd                                         (devel)                                            go-module  
+github.com/docker/cli/cmd/docker                                             v24.0.2                                            go-module  
+github.com/docker/docker/cmd/docker-proxy                                    v24.0.2                                            go-module  
+github.com/docker/docker/cmd/dockerd                                         v24.0.2                                            go-module  
 github.com/docker/go-events                                                  v0.0.0-20190806004212-e31b211e4f1c                 go-module  
 github.com/docker/go-metrics                                                 v0.0.1                                             go-module  
 github.com/docker/go-units                                                   v0.4.0                                             go-module  
@@ -160,7 +160,7 @@ golang.org/x/sys                                                             v0.
 golang.org/x/term                                                            v0.0.0-20210927222741-03fcf44c2211                 go-module  
 golang.org/x/text                                                            v0.3.7                                             go-module  
 golang.org/x/time                                                            v0.0.0-20210723032227-1f47c861a9ac                 go-module  
-google-chrome-stable                                                         114.0.5735.90-1                                    deb        
+google-chrome-stable                                                         114.0.5735.106-1                                   deb        
 google.golang.org/genproto                                                   v0.0.0-20200224152610-e50cd9704f63                 go-module  
 google.golang.org/grpc                                                       v1.47.0                                            go-module  
 google.golang.org/protobuf                                                   v1.27.1                                            go-module  
@@ -311,8 +311,8 @@ libpng16-16                                                                  1.6
 libprocps8                                                                   2:3.3.17-6ubuntu2                                  deb        
 libpsl5                                                                      0.21.0-1.2build2                                   deb        
 libpython3-stdlib                                                            3.10.6-1~22.04                                     deb        
-libpython3.10-minimal                                                        3.10.6-1~22.04.2ubuntu1                            deb        
-libpython3.10-stdlib                                                         3.10.6-1~22.04.2ubuntu1                            deb        
+libpython3.10-minimal                                                        3.10.6-1~22.04.2ubuntu1.1                          deb        
+libpython3.10-stdlib                                                         3.10.6-1~22.04.2ubuntu1.1                          deb        
 libreadline8                                                                 8.1.2-1                                            deb        
 librtmp1                                                                     2.4+20151223.gitfa8646d.1-2build4                  deb        
 libsasl2-2                                                                   2.1.27+dfsg2-3ubuntu1.2                            deb        
@@ -380,7 +380,7 @@ ncurses-bin                                                                  6.3
 netbase                                                                      6.3                                                deb        
 netcat                                                                       1.218-4ubuntu1                                     deb        
 netcat-openbsd                                                               1.218-4ubuntu1                                     deb        
-openssl                                                                      3.0.2-0ubuntu1.9                                   deb        
+openssl                                                                      3.0.2-0ubuntu1.10                                  deb        
 outcome                                                                      1.2.0                                              python     
 packaging                                                                    23.1                                               python     
 passwd                                                                       1:4.8.1-2ubuntu2.1                                 deb        
@@ -399,8 +399,8 @@ python3-pip                                                                  22.
 python3-pkg-resources                                                        59.6.0-1.2ubuntu0.22.04.1                          deb        
 python3-setuptools                                                           59.6.0-1.2ubuntu0.22.04.1                          deb        
 python3-wheel                                                                0.37.1-2ubuntu0.22.04.1                            deb        
-python3.10                                                                   3.10.6-1~22.04.2ubuntu1                            deb        
-python3.10-minimal                                                           3.10.6-1~22.04.2ubuntu1                            deb        
+python3.10                                                                   3.10.6-1~22.04.2ubuntu1.1                          deb        
+python3.10-minimal                                                           3.10.6-1~22.04.2ubuntu1.1                          deb        
 readline-common                                                              8.1.2-1                                            deb        
 requests                                                                     2.28.2                                             python     
 s3transfer                                                                   0.6.1                                              python     
@@ -419,7 +419,7 @@ systemd-sysv                                                                 249
 sysvinit-utils                                                               3.01-1ubuntu1                                      deb        
 tar                                                                          1.34+dfsg-1ubuntu0.1.22.04.1                       deb        
 trio                                                                         0.22.0                                             python     
-trio-websocket                                                               0.10.2                                             python     
+trio-websocket                                                               0.10.3                                             python     
 tzdata                                                                       2023c-0ubuntu0.22.04.1                             deb        
 ubuntu-keyring                                                               2021.03.26                                         deb        
 ubuntu-mono                                                                  20.10-0ubuntu2                                     deb        
@@ -429,7 +429,7 @@ unzip                                                                        6.0
 urllib3                                                                      1.26.16                                            python     
 usrmerge                                                                     25ubuntu2                                          deb        
 util-linux                                                                   2.37.2-4ubuntu3                                    deb        
-websocket-client                                                             1.5.2                                              python     
+websocket-client                                                             1.5.3                                              python     
 wget                                                                         1.21.2-2ubuntu1                                    deb        
 wheel                                                                        0.37.1                                             python     
 wsproto                                                                      1.2.0                                              python     
