@@ -9,7 +9,6 @@ ansi2html                                                                    1.8
 anybadge                                                                     1.14.0                                             python     
 apt                                                                          2.4.9                                              deb        
 apt-utils                                                                    2.4.9                                              deb        
-async-generator                                                              1.10                                               python     
 attrs                                                                        23.1.0                                             python     
 base-files                                                                   12ubuntu4.3                                        deb        
 base-passwd                                                                  3.5.52build1                                       deb        
@@ -221,7 +220,7 @@ libc6                                                                        2.3
 libcairo-gobject2                                                            1.16.0-5ubuntu2                                    deb        
 libcairo2                                                                    1.16.0-5ubuntu2                                    deb        
 libcap-ng0                                                                   0.7.9-2.2build3                                    deb        
-libcap2                                                                      1:2.44-1build3                                     deb        
+libcap2                                                                      1:2.44-1ubuntu0.22.04.1                            deb        
 libcolord2                                                                   1.4.6-1                                            deb        
 libcom-err2                                                                  1.46.5-2ubuntu1.1                                  deb        
 libcrypt1                                                                    1:4.4.27-1                                         deb        
@@ -418,7 +417,7 @@ systemd                                                                      249
 systemd-sysv                                                                 249.11-0ubuntu3.9                                  deb        
 sysvinit-utils                                                               3.01-1ubuntu1                                      deb        
 tar                                                                          1.34+dfsg-1ubuntu0.1.22.04.1                       deb        
-trio                                                                         0.22.0                                             python     
+trio                                                                         0.22.1                                             python     
 trio-websocket                                                               0.10.3                                             python     
 tzdata                                                                       2023c-0ubuntu0.22.04.2                             deb        
 ubuntu-keyring                                                               2021.03.26                                         deb        
