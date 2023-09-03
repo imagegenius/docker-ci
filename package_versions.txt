@@ -13,6 +13,7 @@ attrs                                                                        23.
 base-files                                                                   12ubuntu4.3                               deb        
 base-passwd                                                                  3.5.52build1                              deb        
 bash                                                                         5.1-6ubuntu1                              deb        
+bash                                                                         5.1.16                                    binary     
 boto3                                                                        1.26.108                                  python     
 botocore                                                                     1.29.165                                  python     
 bsdutils                                                                     1:2.37.2-4ubuntu3                         deb        
@@ -159,7 +160,7 @@ golang.org/x/sys                                                             v0.
 golang.org/x/term                                                            v0.6.0                                    go-module  
 golang.org/x/text                                                            v0.8.0                                    go-module  
 golang.org/x/time                                                            v0.0.0-20210723032227-1f47c861a9ac        go-module  
-google-chrome-stable                                                         116.0.5845.110-1                          deb        
+google-chrome-stable                                                         116.0.5845.140-1                          deb        
 google.golang.org/genproto                                                   v0.0.0-20200224152610-e50cd9704f63        go-module  
 google.golang.org/grpc                                                       v1.50.1                                   go-module  
 google.golang.org/protobuf                                                   v1.27.1                                   go-module  
@@ -266,7 +267,7 @@ libjbig0                                                                     2.1
 libjpeg-turbo8                                                               2.1.2-0ubuntu1                            deb        
 libjpeg8                                                                     8c-2ubuntu10                              deb        
 libjq1                                                                       1.6-2.1ubuntu3                            deb        
-libjson-c5                                                                   0.15-3~ubuntu1.22.04.1                    deb        
+libjson-c5                                                                   0.15-3~ubuntu1.22.04.2                    deb        
 libk5crypto3                                                                 1.19.2-2ubuntu0.2                         deb        
 libkeyutils1                                                                 1.6.1-2ubuntu3                            deb        
 libkmod2                                                                     29-1ubuntu1                               deb        
