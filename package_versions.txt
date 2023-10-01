@@ -19,7 +19,7 @@ botocore                                                                      1.
 bsdutils                                                                      1:2.37.2-4ubuntu3                         deb        
 ca-certificates                                                               20230311ubuntu0.22.04.1                   deb        
 certifi                                                                       2023.7.22                                 python     
-charset-normalizer                                                            3.2.0                                     python     
+charset-normalizer                                                            3.3.0                                     python     
 cloud.google.com/go                                                           v0.102.1                                  go-module  
 cloud.google.com/go/compute                                                   v1.7.0                                    go-module  
 cloud.google.com/go/logging                                                   v1.4.2                                    go-module  
@@ -292,7 +292,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.9.0                                    go-module  
 golang.org/x/time                                                             v0.0.0-20210723032227-1f47c861a9ac        go-module  
 golang.org/x/time                                                             v0.3.0                                    go-module  
-google-chrome-stable                                                          117.0.5938.92-1                           deb        
+google-chrome-stable                                                          117.0.5938.132-1                          deb        
 google.golang.org/api                                                         v0.93.0                                   go-module  
 google.golang.org/genproto                                                    v0.0.0-20200224152610-e50cd9704f63        go-module  
 google.golang.org/genproto                                                    v0.0.0-20220706185917-7780775163c4        go-module  
@@ -554,7 +554,7 @@ systemd-sysv                                                                  24
 sysvinit-utils                                                                3.01-1ubuntu1                             deb        
 tar                                                                           1.34+dfsg-1ubuntu0.1.22.04.1              deb        
 trio                                                                          0.22.2                                    python     
-trio-websocket                                                                0.10.4                                    python     
+trio-websocket                                                                0.11.1                                    python     
 tzdata                                                                        2023c-0ubuntu0.22.04.2                    deb        
 ubuntu-keyring                                                                2021.03.26                                deb        
 ubuntu-mono                                                                   20.10-0ubuntu2                            deb        
