@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
+FROM ghcr.io/imagegenius/baseimage-ubuntu:lunar
 
 # set version label
 ARG BUILD_DATE
@@ -17,7 +17,7 @@ RUN \
     gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
   curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | \
     gpg --dearmor -o /etc/apt/keyrings/google.gpg && \
-  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable" | \
+  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu lunar stable" | \
     tee /etc/apt/sources.list.d/docker.list > /dev/null && \
   echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] http://dl.google.com/linux/chrome/deb/ stable main' > \
     /etc/apt/sources.list.d/google-chrome.list && \
@@ -29,20 +29,21 @@ RUN \
     python3 \
     python3-pip \
     python3-setuptools \
-    unzip && \
+    unzip \
+    xvfb && \
   echo "**** install chrome driver ****" && \
-  CHROME_RELEASE=$(curl -sLk https://chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
+  CHROME_RELEASE=$(curl -sX GET "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions.json" | jq -r '.versions | map(select(.version | startswith("117."))) | max_by(.version) | .version') && \
   echo "Retrieving Chrome driver version ${CHROME_RELEASE}" && \
   curl -sk -o \
     /tmp/chrome.zip -L \
-    "https://chromedriver.storage.googleapis.com/${CHROME_RELEASE}/chromedriver_linux64.zip" && \
+    "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROME_RELEASE}/linux64/chromedriver-linux64.zip" && \
   cd /tmp && \
   unzip chrome.zip && \
-  mv chromedriver /usr/bin/chromedriver && \
+  mv chromedriver-linux64/chromedriver /usr/bin/chromedriver && \
   chown root:root /usr/bin/chromedriver && \
   chmod +x /usr/bin/chromedriver && \
   echo "**** Install python deps ****" && \
-  pip3 install --no-cache-dir -r /tmp/requirements.txt && \
+  pip3 install --break-system-packages -U --no-cache-dir -r /tmp/requirements.txt && \
   echo "**** cleanup ****" && \
   apt-get autoclean && \
   rm -rf \
