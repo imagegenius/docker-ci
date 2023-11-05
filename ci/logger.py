@@ -2,69 +2,82 @@
 
 import os
 import logging
+from logging import Logger
 from logging.handlers import TimedRotatingFileHandler
+from logging import LogRecord
 import re
 import platform
-import sys
 
-container = os.environ.get("CONTAINER")
-meta_tag = os.environ.get("META_TAG")
-if container and meta_tag:
-    dir = os.path.join(os.path.dirname(
-        os.path.realpath(__file__)), "output", container, meta_tag)
+image: str | None = os.environ.get("IMAGE")
+meta_tag: str | None = os.environ.get("META_TAG")
+if image and meta_tag:
+    dir: str = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), "output", image, meta_tag)
     os.makedirs(dir, exist_ok=True)
-    log_dir = os.path.join(dir, 'ci.log')
+    log_dir: str = os.path.join(dir, 'ci.log')
 else:
     log_dir = os.path.join(os.getcwd(), 'ci.log')
 
-logger = logging.getLogger()
+logger: Logger = logging.getLogger()
+
+
+class ColorPercentStyle(logging.PercentStyle):
+    """Custom log formatter that add color to specific log levels."""
+    grey: str = "38"
+    yellow: str = "33"
+    red: str = "31"
+    cyan: str = "36"
+
+    def _get_color_fmt(self, color_code, bold=False) -> str:
+        if bold:
+            return "\x1b[" + color_code + ";1m" + self._fmt + "\x1b[0m"
+        return "\x1b[" + color_code + ";20m" + self._fmt + "\x1b[0m"
+
+    def _get_fmt(self, levelno) -> str:
+        colors: dict[int, str] = {
+            logging.DEBUG: self._get_color_fmt(self.grey),
+            logging.INFO: self._get_color_fmt(self.cyan),
+            logging.WARNING: self._get_color_fmt(self.yellow),
+            logging.ERROR: self._get_color_fmt(self.red),
+            logging.CRITICAL: self._get_color_fmt(self.red)
+        }
+
+        return colors.get(levelno, self._get_color_fmt(self.grey))
+
+    def _format(self, record: LogRecord) -> str:
+        return self._get_fmt(record.levelno) % record.__dict__
 
 
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
+    ACCESS_KEY: str = os.environ.get("ACCESS_KEY", "super_secret_key")
+    SECRET_KEY: str = os.environ.get("SECRET_KEY", "super_secret_key")
 
-    ACCESS_KEY = os.environ.get("ACCESS_KEY", "super_secret_key")
-    SECRET_KEY = os.environ.get("SECRET_KEY", "super_secret_key")
-
-    # ANSI escape codes for different colors
-    ANSI_AMD64 = '\u001b[32;1m' # Bright Green
-    ANSI_ARM32 = '\u001b[33;1m' # Yellow
-    ANSI_ARM64 = '\u001b[35;1m' # Magenta
-    ANSI_MAIN = '\u001b[37;1m' # White Bold
-    ANSI_RESET = '\u001b[0m' # Clear
-
-    def formatException(self, exc_info):
+    def formatException(self, exc_info) -> str:
         """Format an exception so that it prints on a single line."""
-        result = super(CustomLogFormatter, self).formatException(exc_info)
+        result: str = super(CustomLogFormatter, self).formatException(exc_info)
         return repr(result)  # or format into one line however you want to
 
-    def format_credential_key(self, s):
+    def format_credential_key(self, s) -> str:
         return re.sub(self.ACCESS_KEY, '(removed)', s)
 
-    def format_secret_key(self, s):
+    def format_secret_key(self, s) -> str:
         return re.sub(self.SECRET_KEY, '(removed)', s)
 
-    def format(self, record):
-        s = super(CustomLogFormatter, self).format(record)
+    def format(self, record) -> str:
+        s: str = super(CustomLogFormatter, self).format(record)
         if record.exc_text:
             s = s.replace('\n', '') + '|'
         s = self.format_credential_key(s)
         s = self.format_secret_key(s)
 
-        # Set color based on thread name
-        if "AMD64" in record.threadName:
-            s = self.ANSI_AMD64 + s + self.ANSI_RESET
-        elif "ARM32" in record.threadName:
-            s = self.ANSI_ARM32 + s + self.ANSI_RESET
-        elif "ARM64" in record.threadName:
-            s = self.ANSI_ARM64 + s + self.ANSI_RESET
-        else:
-            s = self.ANSI_MAIN + s + self.ANSI_RESET
-
         return s
 
+    def formatMessage(self, record) -> str:
+        return ColorPercentStyle(self._fmt).format(record)
 
-def configure_logging(log_level: str):
+
+def configure_logging(log_level: str) -> None:
     """Setup console and file logging"""
 
     logger.handlers = []
