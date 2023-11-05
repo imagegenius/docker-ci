@@ -8,16 +8,18 @@ from logging import LogRecord
 import re
 import platform
 
-image: str | None = os.environ.get("IMAGE")
+container: str | None = os.environ.get("CONTAINER")
 meta_tag: str | None = os.environ.get("META_TAG")
-if image and meta_tag:
-    dir: str = os.path.join(os.path.dirname(os.path.realpath(__file__)),"output",image,meta_tag)
+if container and meta_tag:
+    dir: str = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), "output", container, meta_tag)
     os.makedirs(dir, exist_ok=True)
-    log_dir: str = os.path.join(dir,'ci.log')
+    log_dir: str = os.path.join(dir, 'ci.log')
 else:
-    log_dir = os.path.join(os.getcwd(),'ci.log')
+    log_dir = os.path.join(os.getcwd(), 'ci.log')
 
 logger: Logger = logging.getLogger()
+
 
 class ColorPercentStyle(logging.PercentStyle):
     """Custom log formatter that add color to specific log levels."""
@@ -42,13 +44,14 @@ class ColorPercentStyle(logging.PercentStyle):
 
         return colors.get(levelno, self._get_color_fmt(self.grey))
 
-    def _format(self, record:LogRecord) -> str:
+    def _format(self, record: LogRecord) -> str:
         return self._get_fmt(record.levelno) % record.__dict__
+
 
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
-    ACCESS_KEY: str = os.environ.get("ACCESS_KEY","super_secret_key")
-    SECRET_KEY: str = os.environ.get("SECRET_KEY","super_secret_key")
+    ACCESS_KEY: str = os.environ.get("ACCESS_KEY", "super_secret_key")
+    SECRET_KEY: str = os.environ.get("SECRET_KEY", "super_secret_key")
 
     def formatException(self, exc_info) -> str:
         """Format an exception so that it prints on a single line."""
@@ -73,7 +76,8 @@ class CustomLogFormatter(logging.Formatter):
     def formatMessage(self, record) -> str:
         return ColorPercentStyle(self._fmt).format(record)
 
-def configure_logging(log_level:str) -> None:
+
+def configure_logging(log_level: str) -> None:
     """Setup console and file logging"""
 
     logger.handlers = []
@@ -81,14 +85,17 @@ def configure_logging(log_level:str) -> None:
 
     # Console logging
     ch = logging.StreamHandler()
-    cf = CustomLogFormatter('%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
+    cf = CustomLogFormatter(
+        '%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
     ch.setFormatter(cf)
     ch.setLevel(log_level)
     logger.addHandler(ch)
 
     # File logging
-    fh = TimedRotatingFileHandler(log_dir, when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
-    f = CustomLogFormatter('%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
+    fh = TimedRotatingFileHandler(
+        log_dir, when="midnight", interval=1, backupCount=7, delay=True, encoding='utf-8')
+    f = CustomLogFormatter(
+        '%(asctime)-15s | %(threadName)-17s | %(name)-10s | %(levelname)-8s | (%(module)s.%(funcName)s|line:%(lineno)d) | %(message)s |', '%d/%m/%Y %H:%M:%S')
     fh.setFormatter(f)
     fh.setLevel(log_level)
     logger.addHandler(fh)
@@ -96,5 +103,7 @@ def configure_logging(log_level:str) -> None:
     logging.info('Operating system: %s', platform.platform())
     logging.info('Python version: %s', platform.python_version())
     if log_level.upper() == "DEBUG":
-        logging.getLogger("botocore").setLevel(logging.WARNING) # Mute boto3 logging output
-        logging.getLogger("urllib3.connectionpool").setLevel(logging.WARNING) # Mute urllib3.connectionpool logging output
+        logging.getLogger("botocore").setLevel(
+            logging.WARNING)  # Mute boto3 logging output
+        logging.getLogger("urllib3.connectionpool").setLevel(
+            logging.WARNING)  # Mute urllib3.connectionpool logging output
