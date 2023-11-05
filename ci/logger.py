@@ -8,14 +8,14 @@ from logging import LogRecord
 import re
 import platform
 
-image: str | None = os.environ.get("IMAGE")
+container: str | None = os.environ.get("CONTAINER")
 meta_tag: str | None = os.environ.get("META_TAG")
-if image and meta_tag:
-    dir: str = os.path.join(os.path.dirname(os.path.realpath(__file__)),"output",image,meta_tag)
+if container and meta_tag:
+    dir: str = os.path.join(os.path.dirname(os.path.realpath(__file__)), "output", container, meta_tag)
     os.makedirs(dir, exist_ok=True)
-    log_dir: str = os.path.join(dir,'ci.log')
+    log_dir: str = os.path.join(dir, 'ci.log')
 else:
-    log_dir = os.path.join(os.getcwd(),'ci.log')
+    log_dir = os.path.join(os.getcwd(), 'ci.log')
 
 logger: Logger = logging.getLogger()
 
@@ -42,13 +42,13 @@ class ColorPercentStyle(logging.PercentStyle):
 
         return colors.get(levelno, self._get_color_fmt(self.grey))
 
-    def _format(self, record:LogRecord) -> str:
+    def _format(self, record: LogRecord) -> str:
         return self._get_fmt(record.levelno) % record.__dict__
 
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
-    ACCESS_KEY: str = os.environ.get("ACCESS_KEY","super_secret_key")
-    SECRET_KEY: str = os.environ.get("SECRET_KEY","super_secret_key")
+    ACCESS_KEY: str = os.environ.get("ACCESS_KEY", "super_secret_key")
+    SECRET_KEY: str = os.environ.get("SECRET_KEY", "super_secret_key")
 
     def formatException(self, exc_info) -> str:
         """Format an exception so that it prints on a single line."""
@@ -73,7 +73,7 @@ class CustomLogFormatter(logging.Formatter):
     def formatMessage(self, record) -> str:
         return ColorPercentStyle(self._fmt).format(record)
 
-def configure_logging(log_level:str) -> None:
+def configure_logging(log_level: str) -> None:
     """Setup console and file logging"""
 
     logger.handlers = []

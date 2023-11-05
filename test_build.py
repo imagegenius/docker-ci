@@ -4,13 +4,15 @@ from logging import Logger
 from ci.ci import CI, CIError
 from ci.logger import configure_logging
 
+
 def run_test() -> None:
     """Run tests on container tags then build and upload reports"""
     ci.run(ci.tags)
     # Don't set the whole report as failed if any of the ARM tag fails.
     for tag in ci.report_containers.keys():
         if tag.startswith("amd64") and ci.report_containers[tag]['test_success'] == True:
-            ci.report_status = 'PASS' # Override the report_status if an ARM tag failed, but the amd64 tag passed.
+            # Override the report_status if an ARM tag failed, but the amd64 tag passed.
+            ci.report_status = 'PASS'
     ci.report_render()
     ci.badge_render()
     ci.json_render()
@@ -26,7 +28,7 @@ def run_test() -> None:
 
 if __name__ == '__main__':
     try:
-        log_level: str = os.environ.get("CI_LOG_LEVEL","INFO")
+        log_level: str = os.environ.get("CI_LOG_LEVEL", "INFO")
         configure_logging(log_level)
         import logging
         logger: Logger = logging.getLogger(__name__)
