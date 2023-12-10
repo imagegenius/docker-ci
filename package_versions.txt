@@ -294,7 +294,7 @@ golang.org/x/term                                                             v0
 golang.org/x/text                                                             v0.13.0                                   go-module  
 golang.org/x/time                                                             v0.0.0-20210723032227-1f47c861a9ac        go-module  
 golang.org/x/time                                                             v0.3.0                                    go-module  
-google-chrome-stable                                                          119.0.6045.199-1                          deb        
+google-chrome-stable                                                          120.0.6099.71-1                           deb        
 google.golang.org/api                                                         v0.93.0                                   go-module  
 google.golang.org/genproto                                                    v0.0.0-20200224152610-e50cd9704f63        go-module  
 google.golang.org/genproto                                                    v0.0.0-20220706185917-7780775163c4        go-module  
@@ -397,7 +397,7 @@ libgdk-pixbuf2.0-common                                                       2.
 libgl1                                                                        1.6.0-1                                   deb        
 libgl1-mesa-dri                                                               23.0.4-0ubuntu1~23.04.1                   deb        
 libglapi-mesa                                                                 23.0.4-0ubuntu1~23.04.1                   deb        
-libglib2.0-0                                                                  2.76.1-1                                  deb        
+libglib2.0-0                                                                  2.76.4-0ubuntu1                           deb        
 libglvnd0                                                                     1.6.0-1                                   deb        
 libglx-mesa0                                                                  23.0.4-0ubuntu1~23.04.1                   deb        
 libglx0                                                                       1.6.0-1                                   deb        
@@ -603,7 +603,7 @@ urllib3                                                                       1.
 usrmerge                                                                      33ubuntu1                                 deb        
 util-linux                                                                    2.38.1-4ubuntu1                           deb        
 util-linux-extra                                                              2.38.1-4ubuntu1                           deb        
-websocket-client                                                              1.6.4                                     python     
+websocket-client                                                              1.7.0                                     python     
 wget                                                                          1.21.3-1ubuntu1                           deb        
 wheel                                                                         0.38.4                                    python     
 wsproto                                                                       1.2.0                                     python     
