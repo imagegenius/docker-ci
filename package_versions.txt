@@ -297,7 +297,7 @@ golang.org/x/term                                                             v0
 golang.org/x/text                                                             v0.13.0                                   go-module  
 golang.org/x/time                                                             v0.0.0-20210723032227-1f47c861a9ac        go-module  
 golang.org/x/time                                                             v0.3.0                                    go-module  
-google-chrome-stable                                                          120.0.6099.109-1                          deb        
+google-chrome-stable                                                          120.0.6099.129-1                          deb        
 google.golang.org/api                                                         v0.93.0                                   go-module  
 google.golang.org/genproto                                                    v0.0.0-20200224152610-e50cd9704f63        go-module  
 google.golang.org/genproto                                                    v0.0.0-20220706185917-7780775163c4        go-module  
@@ -486,7 +486,7 @@ libsm6                                                                        2:
 libsmartcols1                                                                 2.38.1-4ubuntu1                           deb        
 libsqlite3-0                                                                  3.40.1-1                                  deb        
 libss2                                                                        1.47.0-1ubuntu1                           deb        
-libssh-4                                                                      0.10.4-2ubuntu0.1                         deb        
+libssh-4                                                                      0.10.4-2ubuntu0.2                         deb        
 libssl3                                                                       3.0.8-1ubuntu1.4                          deb        
 libstdc++6                                                                    13-20230320-1ubuntu1                      deb        
 libsystemd-shared                                                             252.5-2ubuntu3.2                          deb        
