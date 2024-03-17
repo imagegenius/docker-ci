@@ -314,7 +314,7 @@ golang.org/x/term                                                             v0
 golang.org/x/text                                                             v0.14.0                                   go-module  (+2 duplicates)  
 golang.org/x/time                                                             v0.0.0-20210723032227-1f47c861a9ac        go-module                   
 golang.org/x/time                                                             v0.3.0                                    go-module                   
-google-chrome-stable                                                          122.0.6261.111-1                          deb                         
+google-chrome-stable                                                          122.0.6261.128-1                          deb                         
 google.golang.org/api                                                         v0.126.0                                  go-module                   
 google.golang.org/appengine                                                   v1.6.7                                    go-module                   
 google.golang.org/genproto                                                    v0.0.0-20200224152610-e50cd9704f63        go-module  (+4 duplicates)  
@@ -578,7 +578,7 @@ netbase                                                                       6.
 netcat-traditional                                                            1.10-47                                   deb                         
 openssl                                                                       3.0.8-1ubuntu1.4                          deb                         
 outcome                                                                       1.3.0.post0                               python                      
-packaging                                                                     23.2                                      python                      
+packaging                                                                     24.0                                      python                      
 passwd                                                                        1:4.13+dfsg1-1ubuntu1                     deb                         
 perl-base                                                                     5.36.0-7ubuntu0.23.04.1                   deb                         
 pinentry-curses                                                               1.2.1-1ubuntu1                            deb                         
@@ -619,7 +619,7 @@ sysvinit-utils                                                                3.
 tags.cncf.io/container-device-interface                                       v0.6.2                                    go-module                   
 tags.cncf.io/container-device-interface/specs-go                              v0.6.0                                    go-module                   
 tar                                                                           1.34+dfsg-1.2ubuntu0.1                    deb                         
-trio                                                                          0.24.0                                    python                      
+trio                                                                          0.25.0                                    python                      
 trio-websocket                                                                0.11.1                                    python                      
 tzdata                                                                        2023d-0ubuntu0.23.04                      deb                         
 tzdata-icu                                                                    2023d-0ubuntu0.23.04                      deb                         
