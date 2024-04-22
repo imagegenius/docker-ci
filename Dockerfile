@@ -32,7 +32,7 @@ RUN \
     unzip \
     xvfb && \
   echo "**** install chrome driver ****" && \
-  CHROME_RELEASE=$(curl -sX GET "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions.json" | jq -r '.versions | map(select(.version | startswith("123."))) | max_by(.version) | .version') && \
+  CHROME_RELEASE=$(curl -sX GET "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions.json" | jq -r '.versions | map(select(.version | startswith("121."))) | max_by(.version) | .version') && \
   echo "Retrieving Chrome driver version ${CHROME_RELEASE}" && \
   curl -sk -o \
     /tmp/chrome.zip -L \
