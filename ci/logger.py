@@ -19,6 +19,7 @@ else:
 
 logger: Logger = logging.getLogger()
 
+
 class ColorPercentStyle(logging.PercentStyle):
     """Custom log formatter that add color to specific log levels."""
     grey: str = "38"
@@ -44,6 +45,7 @@ class ColorPercentStyle(logging.PercentStyle):
 
     def _format(self, record: LogRecord) -> str:
         return self._get_fmt(record.levelno) % record.__dict__
+
 
 class CustomLogFormatter(logging.Formatter):
     """Formatter that removes creds from logs."""
@@ -72,6 +74,7 @@ class CustomLogFormatter(logging.Formatter):
 
     def formatMessage(self, record) -> str:
         return ColorPercentStyle(self._fmt).format(record)
+
 
 def configure_logging(log_level: str) -> None:
     """Setup console and file logging"""
