@@ -1,174 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<title>CI Results {{ image }}:{{ meta_tag }}</title>
-	<meta name="description" content="CI: {{ 'PASS ✅' if report_status=='PASS' else 'FAIL ❌' }}" />
-	<meta name="author" content="imagegenius.io" />
+  <meta charset="utf-8">
+  <title>CI Results {{ image }}:{{ meta_tag }}</title>
+  <meta name="description" content="CI: {{ 'PASS ✅' if report_status=='PASS' else 'FAIL ❌' }}">
+  <meta name="author" content="imagegenius.io">
 
-	<meta name="theme-color" content="#da3b8a" />
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="{{ bucket }}" />
-	<meta property="og:url" content="https://{{ bucket }}/" />
-	<meta property="og:title" content="CI Results for {{ image }}:{{ meta_tag }}" />
-	<meta property="og:description" content="CI: {{ 'PASS ✅' if report_status=='PASS' else 'FAIL ❌' }}" />
-	<meta property="og:image" content="https://{{ bucket }}/assets/logo.jpg" />
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <meta name="theme-color" content="#da3b8a">
+  <!-- Open Graph Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ bucket }}">
+  <meta property="og:url" content="https://{{ bucket }}/">
+  <meta property="og:title" content="CI Results for {{ image }}:{{ meta_tag }}">
+  <meta property="og:description" content="CI: {{ 'PASS ✅' if report_status=='PASS' else 'FAIL ❌' }}">
+  <meta property="og:image" content="https://{{ bucket }}/{{ image }}/{{ meta_tag }}/logo.jpg">
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet" />
-	<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-		integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
-		crossorigin="anonymous"></script>
-	<!-- Styles-->
-	<link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!-- Styles-->
+  <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
-	<div id="app">
-		<header>
-			<h1>ImageGenius</h1>
-		</header>
-		<div id="results">
-			<h1>Test Results <strong>{{ image }}:{{ meta_tag }}</strong></h1>
-			<h2>
-				Cumulative:
-				<span class="report-status-{{ report_status.lower() }}">{{ report_status }}</span>
-			</h2>
-			<main>
-				{% for tag in report_containers %}
-				<section>
-					<div class="section-header">
-						{% if report_containers[tag]["test_success"] %}
-						<h3 class="section-header-status">
-							<span class="report-status-pass">PASS</span>
-						</h3>
-						{% else %}
-						<h3 class="section-header-status">
-							<span class="report-status-fail">FAIL</span>
-						</h3>
-						{% endif %}
-						<h2 class="section-header-h2">{{ image }}:{{ tag }}</h2>
-					</div>
-					{% if screenshot == 'true' %}
-					<a href="../{{ meta_tag }}/{{ tag }}.jpg">
-						<img src="../{{ meta_tag }}/{{ tag }}.jpg" alt="{{ tag }}" width="600" height="auto"
-							onerror="this.onerror=null; this.src='/assets/404.jpg'; this.parentElement.setAttribute('href','#')" />
-					</a>
-					{% else %}
-					<div class="tag-image">
-						<span>WEB_SCREENSHOT ENV Disabled</span><i class="fas fa-file-image"></i>
-					</div>
-					{% endif %}
-					<div class="build-section">Build Information</div>
-					<div class="build-info-section build">
-						<div class="build-summary">
-							<span class="build-header">Version:</span>
-							<span class="build-info">{{ report_containers[tag]["build_info"]["version"] }}</span>
-						</div>
-						<div class="build-summary">
-							<span class="build-header">Created:</span>
-							<span class="build-info">{{ report_containers[tag]["build_info"]["created"] }}</span>
-						</div>
-						<div class="build-summary">
-							<span class="build-header">Size:</span>
-							<span class="build-info">{{ report_containers[tag]["build_info"]["size"] }}</span>
-						</div>
-						<div class="build-summary">
-							<span class="build-header">Maintainer:</span>
-							<span class="build-info">{{ report_containers[tag]["build_info"]["maintainer"] }}</span>
-						</div>
-					</div>
-					<summary class="summary">
-						<a href="../{{ meta_tag }}/{{ tag }}.log.html" target="_blank">View Container Logs</a>
-					</summary>
-					<details>
-						<summary>Expand</summary>
-						<div class="summary-container">
-							<pre><code>{{ report_containers[tag]["logs"] }}</code></pre>
-						</div>
-					</details>
-					<summary class="summary">
-						<a href="../{{ meta_tag }}/{{ tag }}.sbom.html" target="_blank">View SBOM output</a>
-					</summary>
-					<details>
-						<summary>Expand</summary>
-						<div class="summary-container">
-							<pre><code>{{ report_containers[tag]["sysinfo"] }}</code></pre>
-						</div>
-					</details>
-					{% if report_containers[tag]["has_warnings"]%}
-					<details open>
-						<summary class="warning-summary">Warnings</summary>
-						{% for warning in report_containers[tag]["warnings"] %} {% if report_containers[tag]["warnings"][warning] %}
-						<div class="warning-notice">
-							<code class="warning-note"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ report_containers[tag]["warnings"][warning] }}</code>
-						</div>
-						{% endif %} {% endfor %}
-					</details>
-					{% endif %}
-					<div class="table-container">
-						<table class="styled-table">
-							<thead>
-								<tr class="active-row">
-									<th>Test</th>
-									<th>Result</th>
-									<th>Message</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for test in report_containers[tag]["test_results"] %}
-								<tr>
-									<td>{{ test }}</td>
-									{% if report_containers[tag]["test_results"][test]['status'] == 'PASS' %}
-									<td class="result-cell">
-										{{ report_containers[tag]["test_results"][test]['status'] }}
-										<i class="fas fa-check-circle"></i>
-									</td>
-									{% else %}
-									<td class="result-cell">
-										{{ report_containers[tag]["test_results"][test]['status'] }}
-										<i class="fas fa-exclamation-circle"></i>
-									</td>
-									{% endif %}
-									<td>
-										{{ report_containers[tag]["test_results"][test]["message"] }}
-									</td>
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</section>
-				{% endfor %}
-			</main>
-		</div>
-		<section class="debug-section">
-			<summary class="summary">
-				<a href="../{{ meta_tag }}/python.log.html" target="_blank">View Python Logs</a>
-			</summary>
-			<details>
-				<summary>Expand</summary>
-				<pre id="logs"></pre>
-			</details>
-		</section>
-	</div>
-	<script type="text/javascript" charset="utf-8">
-		fetch("../{{ meta_tag }}/ci.log")
-			.then((response) => response.text())
-			.then((logs) => {
-				pylogs = logs
-					.replace(/\[38;20m/gi, "<span class='log-debug'>")
-					.replace(/\[33;20m/gi, "<span class='log-warning'>")
-					.replace(/\[31;20m/gi, "<span class='log-error'>")
-					.replace(/\[36;20m/gi, "<span class='log-info'>")
-					.replace(/\[0m/gi, "</span>");
-				document.getElementById("logs").innerHTML = pylogs;
-			});
-	</script>
+  <div id="app">
+    <header>
+      <h1>ImageGenius</h1>
+    </header>
+    <div id="results">
+      <h1>Test Results <strong>{{ image }}:{{ meta_tag }}</strong></h1>
+      <h2 style="margin-bottom: 0">Cumulative: <span class="report-status-{{ report_status.lower() }}">{{ report_status
+          }}</span></h2>
+      <span>Total Runtime: {{ total_runtime }}</span>
+      <main>
+        {% for tag in report_containers %}
+        <section>
+          <div class="section-header">
+            {% if report_containers[tag]["test_success"] %}
+            <h3 class="section-header-status"><span class="report-status-pass">PASS</span></h3>
+            {% else %}
+            <h3 class="section-header-status"><span class="report-status-fail">FAIL</span></h3>
+            {% endif %}
+            <h2 class="section-header-h2">
+              {% if report_status.lower() == "pass" %}
+              <a target="_blank" href="https://ghcr.io/{{ image }}:{{ tag }}">{{ image }}:{{ tag }}</a>
+              {% else %}
+              {{ image }}:{{ tag }}
+              {% endif %}
+            </h2>
+          </div>
+          <div class="runtime build-section">Runtime: {{ report_containers[tag]["runtime"] }}</div>
+          {% if screenshot %}
+          <a href="../{{ meta_tag }}/{{ tag }}.jpg">
+            <img src="../{{ meta_tag }}/{{ tag }}.jpg" alt="{{ tag }}" width="600" height="auto"
+              onerror="this.onerror=null; this.src='404.jpg'; this.parentElement.setAttribute('href','#')">
+          </a>
+          {% else %}
+          <div class="tag-image">
+            <span>WEB_SCREENSHOT ENV Disabled</span><i class="fas fa-file-image"></i>
+          </div>
+          {% endif %}
+          <div class="build-section">Build Information</div>
+          <div class="build-info-section build">
+            <div class="build-summary">
+              <span class="build-header">Version:</span> <span class="build-info">{{
+                report_containers[tag]["build_info"]["version"] }}</span>
+            </div>
+            <div class="build-summary">
+              <span class="build-header">Created:</span> <span class="build-info">{{
+                report_containers[tag]["build_info"]["created"] }}</span>
+            </div>
+            <div class="build-summary">
+              <span class="build-header">Size:</span> <span class="build-info">{{
+                report_containers[tag]["build_info"]["size"] }}</span>
+            </div>
+            <div class="build-summary">
+              <span class="build-header">Maintainer:</span> <span class="build-info">{{
+                report_containers[tag]["build_info"]["maintainer"] }}</span>
+            </div>
+          </div>
+          <summary class="summary">
+            <a href="../{{ meta_tag }}/{{ tag }}.log.html" target="_blank">View Container Logs</a>
+          </summary>
+          <details>
+            <summary>Expand</summary>
+            <div class="summary-container">
+              <pre><code>{{ report_containers[tag]["logs"] }}</code></pre>
+            </div>
+          </details>
+          <summary class="summary">
+            <a href="../{{ meta_tag }}/{{ tag }}.sbom.html" target="_blank">View SBOM output</a>
+          </summary>
+          <details>
+            <summary>Expand</summary>
+            <div class="summary-container">
+              <pre><code>{{ report_containers[tag]["sysinfo"] }}</code></pre>
+            </div>
+          </details>
+          {% if report_containers[tag]["has_warnings"]%}
+          <details open>
+            <summary class="warning-summary">Warnings</summary>
+            {% for warning in report_containers[tag]["warnings"] %}
+            {% if report_containers[tag]["warnings"][warning] %}
+            <div class="warning-notice">
+              <code
+                class="warning-note"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ report_containers[tag]["warnings"][warning] }}</code>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </details>
+          {% endif %}
+          <div class="table-container">
+            <table class="styled-table">
+              <thead>
+                <tr class="active-row">
+                  <th>Test</th>
+                  <th>Result</th>
+                  <th>Message</th>
+                  <th>Runtime</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for test in report_containers[tag]["test_results"] %}
+                <tr>
+                  <td>{{ test }}</td>
+                  {% if report_containers[tag]["test_results"][test]['status'] == 'PASS' %}
+                  <td class="result-cell">{{ report_containers[tag]["test_results"][test]['status'] }} <i
+                      class="fas fa-check-circle"></i></td>
+                  {% else %}
+                  <td class="result-cell">{{ report_containers[tag]["test_results"][test]['status'] }} <i
+                      class="fas fa-exclamation-circle"></i></td>
+                  {% endif %}
+                  <td>{{ report_containers[tag]["test_results"][test]["message"] }}</td>
+                  <td>{{ report_containers[tag]["test_results"][test]["runtime"] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        {% endfor %}
+      </main>
+    </div>
+    <section class="debug-section">
+      <summary class="summary">
+        <a href="../{{ meta_tag }}/python.log.html" target="_blank">View Python Logs</a>
+      </summary>
+      <details>
+        <summary>Expand</summary>
+        <pre id="logs"></pre>
+      </details>
+    </section>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    fetch("../{{ meta_tag }}/ci.log")
+      .then(response => response.text())
+      .then(logs => {
+        pylogs = logs.replace(/\[38;20m/gi, "<span class='log-debug'>"
+        ).replace(/\[33;20m/gi, "<span class='log-warning'>"
+        ).replace(/\[31;20m/gi, "<span class='log-error'>"
+        ).replace(/\[36;20m/gi, "<span class='log-info'>"
+        ).replace(/\[32;20m/gi, "<span class='log-success'>"
+        ).replace(/\[0m/gi, "</span>")
+        document.getElementById("logs").innerHTML = pylogs
+      })
+  </script>
 </body>
 
 </html>
