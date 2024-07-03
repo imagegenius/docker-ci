@@ -59,7 +59,7 @@
           {% if screenshot %}
           <a href="../{{ meta_tag }}/{{ tag }}.jpg">
             <img src="../{{ meta_tag }}/{{ tag }}.jpg" alt="{{ tag }}" width="600" height="auto"
-              onerror="this.onerror=null; this.src='404.jpg'; this.parentElement.setAttribute('href','#')">
+              onerror="this.onerror=null; this.src='/assets/404.jpg'; this.parentElement.setAttribute('href','#')">
           </a>
           {% else %}
           <div class="tag-image">
