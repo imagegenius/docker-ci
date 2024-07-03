@@ -557,7 +557,7 @@ class CI(SetEnvs):
         while time.time() < t_end:
             try:
                 logblob: str = container.logs().decode("utf-8")
-                if "[services.d] done." in logblob or "[ls.io-init] done." in logblob:
+                if "[services.d] done." in logblob or "[ig-init] done." in logblob:
                     self.logger.info("%s completed for %s",test, tag)
                     self._add_test_result(tag, test, "PASS", "-", start_time)
                     self.logger.success("%s %s: PASSED after %.2f seconds", test, tag, time.time() - start_time)
