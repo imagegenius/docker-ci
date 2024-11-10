@@ -320,7 +320,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.17.0                                  go-module                   
 golang.org/x/time                                                             v0.0.0-20220210224613-90d013bbcef8       go-module                   
 golang.org/x/time                                                             v0.6.0                                   go-module                   
-google-chrome-stable                                                          130.0.6723.91-1                          deb                         
+google-chrome-stable                                                          130.0.6723.116-1                         deb                         
 google.golang.org/api                                                         v0.155.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20231211222908-989df2bf70f3       go-module  (+4 duplicates)  
 google.golang.org/genproto                                                    v0.0.0-20240123012728-ef4313101c80       go-module                   
@@ -594,7 +594,7 @@ netcat                                                                        1.
 netcat-openbsd                                                                1.218-4ubuntu1                           deb                         
 openssl                                                                       3.0.2-0ubuntu1.18                        deb                         
 outcome                                                                       1.3.0.post0                              python                      
-packaging                                                                     24.1                                     python                      
+packaging                                                                     24.2                                     python                      
 passwd                                                                        1:4.8.1-2ubuntu2.2                       deb                         
 perl-base                                                                     5.34.0-3ubuntu1.3                        deb                         
 pillow                                                                        9.5.0                                    python                      
