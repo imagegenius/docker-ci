@@ -9,13 +9,12 @@ attrs                                                                         25
 base-files                                                                    12ubuntu4.7                              deb                         
 base-passwd                                                                   3.5.52build1                             deb                         
 bash                                                                          5.1-6ubuntu1.1                           deb                         
-bash                                                                          5.1.16                                   binary                      
 boto3                                                                         1.26.108                                 python                      
 botocore                                                                      1.29.165                                 python                      
 bsdutils                                                                      1:2.37.2-4ubuntu3.4                      deb                         
 ca-certificates                                                               20240203~22.04.1                         deb                         
 catatonit                                                                     0.1.7-1                                  deb                         
-certifi                                                                       2025.1.31                                python                      
+certifi                                                                       2025.4.26                                python                      
 charset-normalizer                                                            3.4.1                                    python                      
 cloud.google.com/go/compute/metadata                                          v0.5.2                                   go-module                   
 cloud.google.com/go/logging                                                   v1.9.0                                   go-module                   
@@ -342,7 +341,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.24.0                                  go-module                   
 golang.org/x/time                                                             v0.0.0-20220210224613-90d013bbcef8       go-module                   
 golang.org/x/time                                                             v0.11.0                                  go-module                   
-google-chrome-stable                                                          135.0.7049.95-1                          deb                         
+google-chrome-stable                                                          135.0.7049.114-1                         deb                         
 google.golang.org/api                                                         v0.155.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20231211222908-989df2bf70f3       go-module  (+4 duplicates)  
 google.golang.org/genproto                                                    v0.0.0-20240123012728-ef4313101c80       go-module                   
@@ -366,9 +365,8 @@ gpgsm                                                                         2.
 gpgv                                                                          2.2.27-3ubuntu2.3                        deb                         
 grep                                                                          3.7-1build1                              deb                         
 gtk-update-icon-cache                                                         3.24.33-1ubuntu2.2                       deb                         
-gzip                                                                          1.10                                     binary                      
 gzip                                                                          1.10-4ubuntu4.1                          deb                         
-h11                                                                           0.14.0                                   python                      
+h11                                                                           0.16.0                                   python                      
 hicolor-icon-theme                                                            0.17-2                                   deb                         
 hostname                                                                      3.23ubuntu2                              deb                         
 humanity-icon-theme                                                           0.6.16                                   deb                         
@@ -621,10 +619,10 @@ openssl                                                                       3.
 outcome                                                                       1.3.0.post0                              python                      
 packaging                                                                     25.0                                     python                      
 passwd                                                                        1:4.8.1-2ubuntu2.2                       deb                         
-perl-base                                                                     5.34.0-3ubuntu1.3                        deb                         
+perl-base                                                                     5.34.0-3ubuntu1.4                        deb                         
 pillow                                                                        9.5.0                                    python                      
 pinentry-curses                                                               1.1.1-1build2                            deb                         
-pip                                                                           25.0.1                                   python                      
+pip                                                                           25.1                                     python                      
 procps                                                                        2:3.3.17-6ubuntu2.1                      deb                         
 publicsuffix                                                                  20211207.1025-1                          deb                         
 pysocks                                                                       1.7.1                                    python                      
@@ -666,7 +664,7 @@ tags.cncf.io/container-device-interface                                       v1
 tags.cncf.io/container-device-interface/specs-go                              v0.8.0                                   go-module                   
 tags.cncf.io/container-device-interface/specs-go                              v1.0.0                                   go-module                   
 tar                                                                           1.34+dfsg-1ubuntu0.1.22.04.2             deb                         
-trio                                                                          0.29.0                                   python                      
+trio                                                                          0.30.0                                   python                      
 trio-websocket                                                                0.12.2                                   python                      
 tzdata                                                                        2025b-0ubuntu0.22.04                     deb                         
 ubuntu-keyring                                                                2021.03.26                               deb                         
