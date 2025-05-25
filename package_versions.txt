@@ -1,4 +1,5 @@
 NAME                                                                          VERSION                                  TYPE                       
+Simple Launcher                                                               1.1.0.14                                 binary     (+5 duplicates)  
 adduser                                                                       3.118ubuntu5                             deb                         
 adwaita-icon-theme                                                            41.0-1ubuntu1                            deb                         
 ansi2html                                                                     1.8.0                                    python                      
@@ -16,6 +17,10 @@ ca-certificates                                                               20
 catatonit                                                                     0.1.7-1                                  deb                         
 certifi                                                                       2025.4.26                                python                      
 charset-normalizer                                                            3.4.2                                    python                      
+cli                                                                           UNKNOWN                                  binary                      
+cli-32                                                                        UNKNOWN                                  binary                      
+cli-64                                                                        UNKNOWN                                  binary                      
+cli-arm64                                                                     UNKNOWN                                  binary                      
 cloud.google.com/go/compute/metadata                                          v0.5.2                                   go-module                   
 cloud.google.com/go/logging                                                   v1.9.0                                   go-module                   
 cloud.google.com/go/longrunning                                               v0.5.4                                   go-module                   
@@ -365,6 +370,10 @@ gpgsm                                                                         2.
 gpgv                                                                          2.2.27-3ubuntu2.3                        deb                         
 grep                                                                          3.7-1build1                              deb                         
 gtk-update-icon-cache                                                         3.24.33-1ubuntu2.2                       deb                         
+gui                                                                           UNKNOWN                                  binary                      
+gui-32                                                                        UNKNOWN                                  binary                      
+gui-64                                                                        UNKNOWN                                  binary                      
+gui-arm64                                                                     UNKNOWN                                  binary                      
 gzip                                                                          1.10-4ubuntu4.1                          deb                         
 h11                                                                           0.16.0                                   python                      
 hicolor-icon-theme                                                            0.17-2                                   deb                         
@@ -479,8 +488,8 @@ libkrb5-3                                                                     1.
 libkrb5support0                                                               1.19.2-2ubuntu0.6                        deb                         
 libksba8                                                                      1.6.0-2ubuntu0.2                         deb                         
 liblcms2-2                                                                    2.12~rc1-2build2                         deb                         
-libldap-2.5-0                                                                 2.5.18+dfsg-0ubuntu0.22.04.3             deb                         
-libldap-common                                                                2.5.18+dfsg-0ubuntu0.22.04.3             deb                         
+libldap-2.5-0                                                                 2.5.19+dfsg-0ubuntu0.22.04.1             deb                         
+libldap-common                                                                2.5.19+dfsg-0ubuntu0.22.04.1             deb                         
 libllvm15                                                                     1:15.0.7-0ubuntu0.22.04.3                deb                         
 liblz4-1                                                                      1.9.3-2build2                            deb                         
 liblzma5                                                                      5.2.5-2ubuntu1                           deb                         
@@ -644,6 +653,7 @@ resenje.org/singleflight                                                      v0
 s3transfer                                                                    0.6.2                                    python                      
 sed                                                                           4.8-1ubuntu2                             deb                         
 selenium                                                                      4.8.3                                    python                      
+selenium-manager                                                              UNKNOWN                                  binary                      
 sensible-utils                                                                0.0.17                                   deb                         
 setuptools                                                                    59.6.0                                   python                      
 shared-mime-info                                                              2.1-2                                    deb                         
