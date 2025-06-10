@@ -516,7 +516,7 @@ libp11-kit0                                                                   0.
 libpam-modules                                                                1.4.0-11ubuntu2.5                        deb                         
 libpam-modules-bin                                                            1.4.0-11ubuntu2.5                        deb                         
 libpam-runtime                                                                1.4.0-11ubuntu2.5                        deb                         
-libpam-systemd                                                                249.11-0ubuntu3.15                       deb                         
+libpam-systemd                                                                249.11-0ubuntu3.16                       deb                         
 libpam0g                                                                      1.4.0-11ubuntu2.5                        deb                         
 libpango-1.0-0                                                                1.50.6+ds-2ubuntu1                       deb                         
 libpangocairo-1.0-0                                                           1.50.6+ds-2ubuntu1                       deb                         
@@ -550,7 +550,7 @@ libss2                                                                        1.
 libssh-4                                                                      0.9.6-2ubuntu0.22.04.3                   deb                         
 libssl3                                                                       3.0.2-0ubuntu1.19                        deb                         
 libstdc++6                                                                    12.3.0-1ubuntu1~22.04                    deb                         
-libsystemd0                                                                   249.11-0ubuntu3.15                       deb                         
+libsystemd0                                                                   249.11-0ubuntu3.16                       deb                         
 libtasn1-6                                                                    4.18.0-4ubuntu0.1                        deb                         
 libthai-data                                                                  0.1.29-1build1                           deb                         
 libthai0                                                                      0.1.29-1build1                           deb                         
@@ -669,8 +669,8 @@ sniffio                                                                       1.
 sortedcontainers                                                              2.4.0                                    python                      
 stdlib                                                                        go1.23.7                                 go-module  (+5 duplicates)  
 stdlib                                                                        go1.24.3                                 go-module  (+2 duplicates)  
-systemd                                                                       249.11-0ubuntu3.15                       deb                         
-systemd-sysv                                                                  249.11-0ubuntu3.15                       deb                         
+systemd                                                                       249.11-0ubuntu3.16                       deb                         
+systemd-sysv                                                                  249.11-0ubuntu3.16                       deb                         
 sysvinit-utils                                                                3.01-1ubuntu1                            deb                         
 tags.cncf.io/container-device-interface                                       v0.8.1                                   go-module                   
 tags.cncf.io/container-device-interface                                       v1.0.1                                   go-module                   
