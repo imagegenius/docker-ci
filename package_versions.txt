@@ -4,8 +4,8 @@ adduser                                                                       3.
 adwaita-icon-theme                                                            41.0-1ubuntu1                            deb                         
 ansi2html                                                                     1.8.0                                    python                      
 anybadge                                                                      1.14.0                                   python                      
-apt                                                                           2.4.13                                   deb                         
-apt-utils                                                                     2.4.13                                   deb                         
+apt                                                                           2.4.14                                   deb                         
+apt-utils                                                                     2.4.14                                   deb                         
 attrs                                                                         25.3.0                                   python                      
 base-files                                                                    12ubuntu4.7                              deb                         
 base-passwd                                                                   3.5.52build1                             deb                         
@@ -15,7 +15,7 @@ botocore                                                                      1.
 bsdutils                                                                      1:2.37.2-4ubuntu3.4                      deb                         
 ca-certificates                                                               20240203~22.04.1                         deb                         
 catatonit                                                                     0.1.7-1                                  deb                         
-certifi                                                                       2025.4.26                                python                      
+certifi                                                                       2025.6.15                                python                      
 charset-normalizer                                                            3.4.2                                    python                      
 cli                                                                           UNKNOWN                                  binary                      
 cli-32                                                                        UNKNOWN                                  binary                      
@@ -349,7 +349,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.24.0                                  go-module                   
 golang.org/x/time                                                             v0.0.0-20220210224613-90d013bbcef8       go-module                   
 golang.org/x/time                                                             v0.11.0                                  go-module                   
-google-chrome-stable                                                          137.0.7151.68-1                          deb                         
+google-chrome-stable                                                          137.0.7151.103-1                         deb                         
 google.golang.org/api                                                         v0.155.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20231211222908-989df2bf70f3       go-module  (+4 duplicates)  
 google.golang.org/genproto                                                    v0.0.0-20240123012728-ef4313101c80       go-module                   
@@ -399,7 +399,7 @@ k8s.io/klog/v2                                                                v2
 k8s.io/utils                                                                  v0.0.0-20230220204549-a5ecb0141aa5       go-module                   
 libacl1                                                                       2.3.1-1                                  deb                         
 libapparmor1                                                                  3.0.4-2ubuntu2.4                         deb                         
-libapt-pkg6.0                                                                 2.4.13                                   deb                         
+libapt-pkg6.0                                                                 2.4.14                                   deb                         
 libargon2-1                                                                   0~20171227-0.3                           deb                         
 libasound2                                                                    1.2.6.1-1ubuntu1                         deb                         
 libasound2-data                                                               1.2.6.1-1ubuntu1                         deb                         
@@ -418,8 +418,8 @@ libblkid1                                                                     2.
 libbrotli1                                                                    1.0.9-2build6                            deb                         
 libbsd0                                                                       0.11.5-1                                 deb                         
 libbz2-1.0                                                                    1.0.8-5build1                            deb                         
-libc-bin                                                                      2.35-0ubuntu3.9                          deb                         
-libc6                                                                         2.35-0ubuntu3.9                          deb                         
+libc-bin                                                                      2.35-0ubuntu3.10                         deb                         
+libc6                                                                         2.35-0ubuntu3.10                         deb                         
 libcairo-gobject2                                                             1.16.0-5ubuntu2                          deb                         
 libcairo2                                                                     1.16.0-5ubuntu2                          deb                         
 libcap-ng0                                                                    0.7.9-2.2build3                          deb                         
@@ -469,7 +469,7 @@ libgmp10                                                                      2:
 libgnutls30                                                                   3.7.3-4ubuntu1.6                         deb                         
 libgpg-error0                                                                 1.43-3                                   deb                         
 libgraphite2-3                                                                1.3.14-1build2                           deb                         
-libgssapi-krb5-2                                                              1.19.2-2ubuntu0.6                        deb                         
+libgssapi-krb5-2                                                              1.19.2-2ubuntu0.7                        deb                         
 libgtk-3-0                                                                    3.24.33-1ubuntu2.2                       deb                         
 libgtk-3-common                                                               3.24.33-1ubuntu2.2                       deb                         
 libharfbuzz0b                                                                 2.7.4-1ubuntu3.2                         deb                         
@@ -484,11 +484,11 @@ libjpeg-turbo8                                                                2.
 libjpeg8                                                                      8c-2ubuntu10                             deb                         
 libjq1                                                                        1.6-2.1ubuntu3                           deb                         
 libjson-c5                                                                    0.15-3~ubuntu1.22.04.2                   deb                         
-libk5crypto3                                                                  1.19.2-2ubuntu0.6                        deb                         
+libk5crypto3                                                                  1.19.2-2ubuntu0.7                        deb                         
 libkeyutils1                                                                  1.6.1-2ubuntu3                           deb                         
 libkmod2                                                                      29-1ubuntu1                              deb                         
-libkrb5-3                                                                     1.19.2-2ubuntu0.6                        deb                         
-libkrb5support0                                                               1.19.2-2ubuntu0.6                        deb                         
+libkrb5-3                                                                     1.19.2-2ubuntu0.7                        deb                         
+libkrb5support0                                                               1.19.2-2ubuntu0.7                        deb                         
 libksba8                                                                      1.6.0-2ubuntu0.2                         deb                         
 liblcms2-2                                                                    2.12~rc1-2build2                         deb                         
 libldap-2.5-0                                                                 2.5.19+dfsg-0ubuntu0.22.04.1             deb                         
@@ -614,7 +614,7 @@ libxtables12                                                                  1.
 libxxf86vm1                                                                   1:1.1.4-1build3                          deb                         
 libxxhash0                                                                    0.8.1-1                                  deb                         
 libzstd1                                                                      1.4.8+dfsg-3build1                       deb                         
-locales                                                                       2.35-0ubuntu3.9                          deb                         
+locales                                                                       2.35-0ubuntu3.10                         deb                         
 login                                                                         1:4.8.1-2ubuntu2.2                       deb                         
 logsave                                                                       1.46.5-2ubuntu1.2                        deb                         
 lsb-base                                                                      11.1.0ubuntu4                            deb                         
@@ -680,7 +680,7 @@ tar                                                                           1.
 trio                                                                          0.30.0                                   python                      
 trio-websocket                                                                0.12.2                                   python                      
 typing-extensions                                                             4.14.0                                   python                      
-tzdata                                                                        2025b-0ubuntu0.22.04                     deb                         
+tzdata                                                                        2025b-0ubuntu0.22.04.1                   deb                         
 ubuntu-keyring                                                                2021.03.26                               deb                         
 ubuntu-mono                                                                   20.10-0ubuntu2                           deb                         
 ucf                                                                           3.0043                                   deb                         
