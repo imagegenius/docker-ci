@@ -91,7 +91,7 @@ class SetEnvs():
 
         self.ssl: str = os.environ.get("SSL", "false")
         self.region: str = os.environ.get("S3_REGION", "ap-melbourne-1")
-        self.bucket: str = os.environ.get("S3_BUCKET", "ci-tests.imagegenius.io")
+        self.bucket: str = os.environ.get("S3_BUCKET", "ci-tests")
 
         if os.environ.get("DELAY_START"):
             self.logger.warning("DELAY_START env is obsolete, and not in use anymore")
