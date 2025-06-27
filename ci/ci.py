@@ -586,7 +586,6 @@ class CI(SetEnvs):
                 meta_tag=self.meta_tag,
                 image=self.image,
                 bucket=self.bucket,
-                region=self.region,
                 screenshot=self.screenshot,
                 total_runtime=f"{self.total_runtime:.2f}s",
             ))
