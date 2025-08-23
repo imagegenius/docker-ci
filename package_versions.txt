@@ -50,7 +50,7 @@ findutils                                                                     4.
 fontconfig                                                                    2.13.1-4.2ubuntu5                        deb                         
 fontconfig-config                                                             2.13.1-4.2ubuntu5                        deb                         
 fonts-liberation                                                              1:1.07.4-11                              deb                         
-gcc-12-base                                                                   12.3.0-1ubuntu1~22.04                    deb                         
+gcc-12-base                                                                   12.3.0-1ubuntu1~22.04.2                  deb                         
 github.com/Azure/azure-sdk-for-go/sdk/azcore                                  v1.16.0                                  go-module                   
 github.com/Azure/azure-sdk-for-go/sdk/internal                                v1.10.0                                  go-module                   
 github.com/Azure/azure-sdk-for-go/sdk/storage/azblob                          v1.5.0                                   go-module                   
@@ -457,7 +457,7 @@ libfontenc1                                                                   1:
 libfreetype6                                                                  2.11.1+dfsg-1ubuntu0.3                   deb                         
 libfribidi0                                                                   1.0.8-2ubuntu3.1                         deb                         
 libgbm1                                                                       23.2.1-1ubuntu3.1~22.04.3                deb                         
-libgcc-s1                                                                     12.3.0-1ubuntu1~22.04                    deb                         
+libgcc-s1                                                                     12.3.0-1ubuntu1~22.04.2                  deb                         
 libgcrypt20                                                                   1.9.4-3ubuntu3                           deb                         
 libgdk-pixbuf-2.0-0                                                           2.42.8+dfsg-1ubuntu0.4                   deb                         
 libgdk-pixbuf2.0-common                                                       2.42.8+dfsg-1ubuntu0.4                   deb                         
@@ -552,7 +552,7 @@ libsqlite3-0                                                                  3.
 libss2                                                                        1.46.5-2ubuntu1.2                        deb                         
 libssh-4                                                                      0.9.6-2ubuntu0.22.04.4                   deb                         
 libssl3                                                                       3.0.2-0ubuntu1.19                        deb                         
-libstdc++6                                                                    12.3.0-1ubuntu1~22.04                    deb                         
+libstdc++6                                                                    12.3.0-1ubuntu1~22.04.2                  deb                         
 libsystemd0                                                                   249.11-0ubuntu3.16                       deb                         
 libtasn1-6                                                                    4.18.0-4ubuntu0.1                        deb                         
 libthai-data                                                                  0.1.29-1build1                           deb                         
