@@ -34,8 +34,8 @@ dario.cat/mergo                                                               v1
 dash                                                                          0.5.11+git20210903+057cd650a4ed-3build1  deb                         
 dbus                                                                          1.12.20-2ubuntu4.1                       deb                         
 dbus-user-session                                                             1.12.20-2ubuntu4.1                       deb                         
-dconf-gsettings-backend                                                       0.40.0-3                                 deb                         
-dconf-service                                                                 0.40.0-3                                 deb                         
+dconf-gsettings-backend                                                       0.40.0-3ubuntu0.1                        deb                         
+dconf-service                                                                 0.40.0-3ubuntu0.1                        deb                         
 debconf                                                                       1.5.79ubuntu1                            deb                         
 debianutils                                                                   5.5-1ubuntu2                             deb                         
 diffutils                                                                     1:3.8-0ubuntu2                           deb                         
@@ -354,7 +354,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.24.0                                  go-module                   
 golang.org/x/time                                                             v0.0.0-20220210224613-90d013bbcef8       go-module                   
 golang.org/x/time                                                             v0.11.0                                  go-module                   
-google-chrome-stable                                                          140.0.7339.127-1                         deb                         
+google-chrome-stable                                                          140.0.7339.185-1                         deb                         
 google.golang.org/api                                                         v0.160.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20231211222908-989df2bf70f3       go-module  (+4 duplicates)  
 google.golang.org/genproto                                                    v0.0.0-20240227224415-6ceb2ff114de       go-module                   
@@ -439,7 +439,7 @@ libcurl4                                                                      7.
 libdatrie1                                                                    0.2.13-2                                 deb                         
 libdb5.3                                                                      5.3.28+dfsg1-0.8ubuntu3                  deb                         
 libdbus-1-3                                                                   1.12.20-2ubuntu4.1                       deb                         
-libdconf1                                                                     0.40.0-3                                 deb                         
+libdconf1                                                                     0.40.0-3ubuntu0.1                        deb                         
 libdebconfclient0                                                             0.261ubuntu1                             deb                         
 libdeflate0                                                                   1.10-2                                   deb                         
 libdevmapper1.02.1                                                            2:1.02.175-2.1ubuntu5                    deb                         
