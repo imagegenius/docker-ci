@@ -15,7 +15,7 @@ botocore                                                                      1.
 bsdutils                                                                      1:2.37.2-4ubuntu3.4                      deb                         
 ca-certificates                                                               20240203~22.04.1                         deb                         
 catatonit                                                                     0.1.7-1                                  deb                         
-certifi                                                                       2025.11.12                               python                      
+certifi                                                                       2026.1.4                                 python                      
 charset-normalizer                                                            3.4.4                                    python                      
 cli                                                                           UNKNOWN                                  binary                      
 cli-32                                                                        UNKNOWN                                  binary                      
