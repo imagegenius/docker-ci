@@ -42,8 +42,8 @@ debianutils                                                                   5.
 diffutils                                                                     1:3.8-0ubuntu2                           deb                         
 dirmngr                                                                       2.2.27-3ubuntu2.4                        deb                         
 docker                                                                        6.0.1                                    python                      
-docker-ce                                                                     5:29.1.4-1~ubuntu.22.04~jammy            deb                         
-docker-ce-cli                                                                 5:29.1.4-1~ubuntu.22.04~jammy            deb                         
+docker-ce                                                                     5:29.1.5-1~ubuntu.22.04~jammy            deb                         
+docker-ce-cli                                                                 5:29.1.5-1~ubuntu.22.04~jammy            deb                         
 dpkg                                                                          1.21.1ubuntu2.6                          deb                         
 e2fsprogs                                                                     1.46.5-2ubuntu1.2                        deb                         
 exceptiongroup                                                                1.3.1                                    python                      
@@ -203,7 +203,7 @@ github.com/moby/go-archive                                                    v0
 github.com/moby/ipvs                                                          v1.1.0                                   go-module                   
 github.com/moby/locker                                                        v1.0.1                                   go-module  (+2 duplicates)  
 github.com/moby/moby/api                                                      v1.52.0                                  go-module                   
-github.com/moby/moby/v2                                                       v29.1.4                                  go-module  (+1 duplicate)   
+github.com/moby/moby/v2                                                       v29.1.5                                  go-module  (+1 duplicate)   
 github.com/moby/patternmatcher                                                v0.6.0                                   go-module                   
 github.com/moby/policy-helpers                                                v0.0.0-20251105011237-bcaa71c99f14       go-module                   
 github.com/moby/profiles/apparmor                                             v0.1.0                                   go-module                   
@@ -337,7 +337,7 @@ golang.org/x/sys                                                              v0
 golang.org/x/term                                                             v0.37.0                                  go-module                   
 golang.org/x/text                                                             v0.31.0                                  go-module  (+2 duplicates)  
 golang.org/x/time                                                             v0.14.0                                  go-module  (+1 duplicate)   
-google-chrome-stable                                                          143.0.7499.192-1                         deb                         
+google-chrome-stable                                                          144.0.7559.59-1                          deb                         
 google.golang.org/api                                                         v0.248.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20250603155806-513f23925822       go-module                   
 google.golang.org/genproto/googleapis/api                                     v0.0.0-20250804133106-a7a43d27e69b       go-module                   
@@ -509,12 +509,12 @@ libpciaccess0                                                                 0.
 libpcre2-8-0                                                                  10.39-3ubuntu0.1                         deb                         
 libpcre3                                                                      2:8.39-13ubuntu0.22.04.1                 deb                         
 libpixman-1-0                                                                 0.40.0-1ubuntu0.22.04.1                  deb                         
-libpng16-16                                                                   1.6.37-3ubuntu0.1                        deb                         
+libpng16-16                                                                   1.6.37-3ubuntu0.3                        deb                         
 libprocps8                                                                    2:3.3.17-6ubuntu2.1                      deb                         
 libpsl5                                                                       0.21.0-1.2build2                         deb                         
 libpython3-stdlib                                                             3.10.6-1~22.04.1                         deb                         
-libpython3.10-minimal                                                         3.10.12-1~22.04.12                       deb                         
-libpython3.10-stdlib                                                          3.10.12-1~22.04.12                       deb                         
+libpython3.10-minimal                                                         3.10.12-1~22.04.13                       deb                         
+libpython3.10-stdlib                                                          3.10.12-1~22.04.13                       deb                         
 libreadline8                                                                  8.1.2-1                                  deb                         
 librtmp1                                                                      2.4+20151223.gitfa8646d.1-2build4        deb                         
 libsasl2-2                                                                    2.1.27+dfsg2-3ubuntu1.2                  deb                         
@@ -631,9 +631,9 @@ python3-minimal                                                               3.
 python3-pip-whl                                                               22.0.2+dfsg-1ubuntu0.7                   deb                         
 python3-setuptools-whl                                                        59.6.0-1.2ubuntu0.22.04.3                deb                         
 python3-venv                                                                  3.10.6-1~22.04.1                         deb                         
-python3.10                                                                    3.10.12-1~22.04.12                       deb                         
-python3.10-minimal                                                            3.10.12-1~22.04.12                       deb                         
-python3.10-venv                                                               3.10.12-1~22.04.12                       deb                         
+python3.10                                                                    3.10.12-1~22.04.13                       deb                         
+python3.10-minimal                                                            3.10.12-1~22.04.13                       deb                         
+python3.10-venv                                                               3.10.12-1~22.04.13                       deb                         
 pyvirtualdisplay                                                              3.0                                      python                      
 readline-common                                                               8.1.2-1                                  deb                         
 requests                                                                      2.28.2                                   python                      
@@ -653,7 +653,7 @@ six                                                                           1.
 sniffio                                                                       1.3.1                                    python                      
 sortedcontainers                                                              2.4.0                                    python                      
 stdlib                                                                        go1.24.11                                go-module  (+3 duplicates)  
-stdlib                                                                        go1.25.5                                 go-module  (+2 duplicates)  
+stdlib                                                                        go1.25.6                                 go-module  (+2 duplicates)  
 systemd                                                                       249.11-0ubuntu3.17                       deb                         
 systemd-sysv                                                                  249.11-0ubuntu3.17                       deb                         
 sysvinit-utils                                                                3.01-1ubuntu1                            deb                         
