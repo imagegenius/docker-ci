@@ -386,7 +386,7 @@ golang.org/x/term                                                             v0
 golang.org/x/text                                                             v0.31.0                                  go-module  (+1 duplicate)   
 golang.org/x/text                                                             v0.33.0                                  go-module                   
 golang.org/x/time                                                             v0.14.0                                  go-module  (+1 duplicate)   
-google-chrome-stable                                                          145.0.7632.75-1                          deb                         
+google-chrome-stable                                                          145.0.7632.109-1                         deb                         
 google.golang.org/api                                                         v0.260.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20251202230838-ff82c1b0f217       go-module                   
 google.golang.org/genproto/googleapis/api                                     v0.0.0-20250804133106-a7a43d27e69b       go-module                   
@@ -434,8 +434,8 @@ libacl1                                                                       2.
 libapparmor1                                                                  3.0.4-2ubuntu2.5                         deb                         
 libapt-pkg6.0                                                                 2.4.14                                   deb                         
 libargon2-1                                                                   0~20171227-0.3                           deb                         
-libasound2                                                                    1.2.6.1-1ubuntu1                         deb                         
-libasound2-data                                                               1.2.6.1-1ubuntu1                         deb                         
+libasound2                                                                    1.2.6.1-1ubuntu1.1                       deb                         
+libasound2-data                                                               1.2.6.1-1ubuntu1.1                       deb                         
 libassuan0                                                                    2.5.5-1build1                            deb                         
 libatk-bridge2.0-0                                                            2.38.0-3                                 deb                         
 libatk1.0-0                                                                   2.36.0-3build1                           deb                         
