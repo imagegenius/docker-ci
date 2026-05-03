@@ -42,8 +42,8 @@ debianutils                                                                   5.
 diffutils                                                                     1:3.8-0ubuntu2                           deb                         
 dirmngr                                                                       2.2.27-3ubuntu2.5                        deb                         
 docker                                                                        6.0.1                                    python                      
-docker-ce                                                                     5:29.4.1-1~ubuntu.22.04~jammy            deb                         
-docker-ce-cli                                                                 5:29.4.1-1~ubuntu.22.04~jammy            deb                         
+docker-ce                                                                     5:29.4.2-2~ubuntu.22.04~jammy            deb                         
+docker-ce-cli                                                                 5:29.4.2-2~ubuntu.22.04~jammy            deb                         
 dpkg                                                                          1.21.1ubuntu2.6                          deb                         
 e2fsprogs                                                                     1.46.5-2ubuntu1.2                        deb                         
 exceptiongroup                                                                1.3.1                                    python                      
@@ -235,11 +235,11 @@ github.com/moby/go-archive                                                    v0
 github.com/moby/ipvs                                                          v1.1.0                                   go-module                   
 github.com/moby/locker                                                        v1.0.1                                   go-module  (+2 duplicates)  
 github.com/moby/moby/api                                                      v1.54.2                                  go-module                   
-github.com/moby/moby/v2                                                       v29.4.1                                  go-module  (+1 duplicate)   
+github.com/moby/moby/v2                                                       v29.4.2                                  go-module  (+1 duplicate)   
 github.com/moby/patternmatcher                                                v0.6.1                                   go-module                   
 github.com/moby/policy-helpers                                                v0.0.0-20260324161837-b7c0b994300b       go-module                   
 github.com/moby/profiles/apparmor                                             v0.1.0                                   go-module                   
-github.com/moby/profiles/seccomp                                              v0.1.0                                   go-module                   
+github.com/moby/profiles/seccomp                                              v0.2.2                                   go-module                   
 github.com/moby/pubsub                                                        v1.0.0                                   go-module                   
 github.com/moby/spdystream                                                    v0.5.1                                   go-module                   
 github.com/moby/swarmkit/v2                                                   v2.1.2-0.20251110192100-17b8d222e7dd     go-module                   
@@ -392,7 +392,7 @@ golang.org/x/text                                                             v0
 golang.org/x/text                                                             v0.36.0                                  go-module                   
 golang.org/x/time                                                             v0.14.0                                  go-module                   
 golang.org/x/time                                                             v0.15.0                                  go-module                   
-google-chrome-stable                                                          147.0.7727.116-1                         deb                         
+google-chrome-stable                                                          147.0.7727.137-1                         deb                         
 google.golang.org/api                                                         v0.272.0                                 go-module                   
 google.golang.org/genproto                                                    v0.0.0-20260401024825-9d38bb4040a9       go-module                   
 google.golang.org/genproto/googleapis/api                                     v0.0.0-20251029180050-ab9386a59fda       go-module                   
@@ -462,7 +462,7 @@ libc6                                                                         2.
 libcairo-gobject2                                                             1.16.0-5ubuntu2.1                        deb                         
 libcairo2                                                                     1.16.0-5ubuntu2.1                        deb                         
 libcap-ng0                                                                    0.7.9-2.2build3                          deb                         
-libcap2                                                                       1:2.44-1ubuntu0.22.04.2                  deb                         
+libcap2                                                                       1:2.44-1ubuntu0.22.04.3                  deb                         
 libcolord2                                                                    1.4.6-1                                  deb                         
 libcom-err2                                                                   1.46.5-2ubuntu1.2                        deb                         
 libcrypt1                                                                     1:4.4.27-1                               deb                         
@@ -526,11 +526,11 @@ libjq1                                                                        1.
 libjson-c5                                                                    0.15-3~ubuntu1.22.04.2                   deb                         
 libk5crypto3                                                                  1.19.2-2ubuntu0.7                        deb                         
 libkeyutils1                                                                  1.6.1-2ubuntu3                           deb                         
-libkmod2                                                                      29-1ubuntu1                              deb                         
+libkmod2                                                                      29-1ubuntu1.1                            deb                         
 libkrb5-3                                                                     1.19.2-2ubuntu0.7                        deb                         
 libkrb5support0                                                               1.19.2-2ubuntu0.7                        deb                         
 libksba8                                                                      1.6.0-2ubuntu0.2                         deb                         
-liblcms2-2                                                                    2.12~rc1-2build2                         deb                         
+liblcms2-2                                                                    2.12~rc1-2ubuntu0.1                      deb                         
 libldap-2.5-0                                                                 2.5.20+dfsg-0ubuntu0.22.04.1             deb                         
 libldap-common                                                                2.5.20+dfsg-0ubuntu0.22.04.1             deb                         
 libllvm15                                                                     1:15.0.7-0ubuntu0.22.04.3                deb                         
@@ -676,7 +676,7 @@ passwd                                                                        1:
 perl-base                                                                     5.34.0-3ubuntu1.5                        deb                         
 pillow                                                                        9.5.0                                    python                      
 pinentry-curses                                                               1.1.1-1build2                            deb                         
-pip                                                                           26.0.1                                   python                      
+pip                                                                           26.1                                     python                      
 procps                                                                        2:3.3.17-6ubuntu2.1                      deb                         
 publicsuffix                                                                  20211207.1025-1                          deb                         
 pysocks                                                                       1.7.1                                    python                      
